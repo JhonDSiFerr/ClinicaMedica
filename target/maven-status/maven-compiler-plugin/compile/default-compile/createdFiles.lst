@@ -24,6 +24,7 @@ AtendenteTelas\CadastrarMedico$1.class
 MedicoTelas\PacientesCadastrados$1.class
 AtendenteTelas\AgendarCosulta.class
 Entidades\Paciente.class
+AtendenteTelas\Agenda$3.class
 AtendenteTelas\EditarMedico$2.class
 Daos\ConnectDatabase.class
 AtendenteTelas\EditarPaciente$1.class
@@ -47,6 +48,7 @@ AtendenteTelas\EditarMedico$1.class
 AtendenteTelas\MedicosCadastradosAtendente.class
 MedicoTelas\Prontuario$1.class
 AtendenteTelas\Cadastrarespecialidades$4.class
+AtendenteTelas\Agenda$4.class
 AtendenteTelas\EditarPaciente$2.class
 AtendenteTelas\EspecialidadeCadastradas.class
 Login\LoginTela$1.class
