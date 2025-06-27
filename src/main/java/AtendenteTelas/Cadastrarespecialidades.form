@@ -45,7 +45,7 @@
             </Menu>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="AgendarConsultas">
+        <Menu class="javax.swing.JMenu" name="AgendarConsultasMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agendar Consultas"/>
           </Properties>

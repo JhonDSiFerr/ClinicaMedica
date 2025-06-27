@@ -45,35 +45,35 @@ public class CadastrarPaciente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        NomeTextField = new javax.swing.JTextField();
+        CpfTextField = new javax.swing.JTextField();
+        TelefoneTextField = new javax.swing.JTextField();
+        EnderecoTextField = new javax.swing.JTextField();
+        SexoTextField = new javax.swing.JTextField();
+        EstadoCivilComboBox = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        DatadeNascimentoTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        ConvenioCheckBox = new javax.swing.JCheckBox();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        InformacoesTextArea = new javax.swing.JTextArea();
+        SalvarButton = new javax.swing.JButton();
+        CancelarButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenu9 = new javax.swing.JMenu();
-        jMenu10 = new javax.swing.JMenu();
-        jMenu11 = new javax.swing.JMenu();
-        jMenu12 = new javax.swing.JMenu();
-        jMenu13 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        PacientesMenu = new javax.swing.JMenu();
+        PacientesCadastradosMenu = new javax.swing.JMenu();
+        CadastrarPacienteMenu = new javax.swing.JMenu();
+        AgendarConsultasMenu = new javax.swing.JMenu();
+        AgendarRetornoMenu = new javax.swing.JMenu();
+        MedicosMenu = new javax.swing.JMenu();
+        CadastrarMedicoMenu = new javax.swing.JMenu();
+        MedicosCadastradosMenu = new javax.swing.JMenu();
+        EspecialidadesMenu = new javax.swing.JMenu();
+        ListarEspecialidadesMenu = new javax.swing.JMenu();
+        CadastrarEspecialidadesMenu = new javax.swing.JMenu();
+        AgendaMenu = new javax.swing.JMenu();
+        SairMenu = new javax.swing.JMenu();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -94,7 +94,7 @@ public class CadastrarPaciente extends javax.swing.JFrame {
 
         jLabel6.setText("Estado Civil");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        EstadoCivilComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel7.setText("Data de Nascimento");
 
@@ -102,65 +102,65 @@ public class CadastrarPaciente extends javax.swing.JFrame {
 
         jLabel9.setText("Informações:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        InformacoesTextArea.setColumns(20);
+        InformacoesTextArea.setRows(5);
+        jScrollPane1.setViewportView(InformacoesTextArea);
 
-        jButton1.setText("Salvar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        SalvarButton.setText("Salvar");
+        SalvarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SalvarButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        CancelarButton.setText("Cancelar");
+        CancelarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                CancelarButtonActionPerformed(evt);
             }
         });
 
-        jMenu6.setText("Pacientes");
+        PacientesMenu.setText("Pacientes");
 
-        jMenu1.setText("Pacientes Cadastrados");
-        jMenu6.add(jMenu1);
+        PacientesCadastradosMenu.setText("Pacientes Cadastrados");
+        PacientesMenu.add(PacientesCadastradosMenu);
 
-        jMenu2.setText("Cadastrar Paciente");
-        jMenu6.add(jMenu2);
+        CadastrarPacienteMenu.setText("Cadastrar Paciente");
+        PacientesMenu.add(CadastrarPacienteMenu);
 
-        jMenuBar1.add(jMenu6);
+        jMenuBar1.add(PacientesMenu);
 
-        jMenu4.setText("Agendar Consultas ");
-        jMenuBar1.add(jMenu4);
+        AgendarConsultasMenu.setText("Agendar Consultas ");
+        jMenuBar1.add(AgendarConsultasMenu);
 
-        jMenu5.setText("Agendar retorno");
-        jMenuBar1.add(jMenu5);
+        AgendarRetornoMenu.setText("Agendar retorno");
+        jMenuBar1.add(AgendarRetornoMenu);
 
-        jMenu7.setText("Médicos");
+        MedicosMenu.setText("Médicos");
 
-        jMenu8.setText("Cadastrar Médico");
-        jMenu7.add(jMenu8);
+        CadastrarMedicoMenu.setText("Cadastrar Médico");
+        MedicosMenu.add(CadastrarMedicoMenu);
 
-        jMenu9.setText("Médicos Cadastrados");
-        jMenu7.add(jMenu9);
+        MedicosCadastradosMenu.setText("Médicos Cadastrados");
+        MedicosMenu.add(MedicosCadastradosMenu);
 
-        jMenuBar1.add(jMenu7);
+        jMenuBar1.add(MedicosMenu);
 
-        jMenu10.setText("Especialidades");
+        EspecialidadesMenu.setText("Especialidades");
 
-        jMenu11.setText("Listar Especialidades");
-        jMenu10.add(jMenu11);
+        ListarEspecialidadesMenu.setText("Listar Especialidades");
+        EspecialidadesMenu.add(ListarEspecialidadesMenu);
 
-        jMenu12.setText("Cadastrar Especialidades");
-        jMenu10.add(jMenu12);
+        CadastrarEspecialidadesMenu.setText("Cadastrar Especialidades");
+        EspecialidadesMenu.add(CadastrarEspecialidadesMenu);
 
-        jMenuBar1.add(jMenu10);
+        jMenuBar1.add(EspecialidadesMenu);
 
-        jMenu13.setText("Agenda");
-        jMenuBar1.add(jMenu13);
+        AgendaMenu.setText("Agenda");
+        jMenuBar1.add(AgendaMenu);
 
-        jMenu3.setText("Sair");
-        jMenuBar1.add(jMenu3);
+        SairMenu.setText("Sair");
+        jMenuBar1.add(SairMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -180,78 +180,79 @@ public class CadastrarPaciente extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4))
+                            .addComponent(NomeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(CpfTextField)
+                            .addComponent(TelefoneTextField)
+                            .addComponent(EnderecoTextField))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(112, 112, 112)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox1))
+                                .addComponent(ConvenioCheckBox))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(99, 99, 99)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jButton1)
+                                            .addComponent(SalvarButton)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton2))
+                                            .addComponent(CancelarButton))
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(39, 39, 39)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(SexoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel7)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField7))
+                            .addComponent(DatadeNascimentoTextField))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel6)
                             .addGap(18, 18, 18)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(EstadoCivilComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jLabel8))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ConvenioCheckBox, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(NomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CpfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TelefoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(EnderecoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(SexoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(DatadeNascimentoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EstadoCivilComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
+                            .addComponent(SalvarButton)
+                            .addComponent(CancelarButton))
                         .addGap(7, 7, 7))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -265,13 +266,13 @@ public class CadastrarPaciente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SalvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SalvarButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void CancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_CancelarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,14 +300,34 @@ public class CadastrarPaciente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu AgendaMenu;
+    private javax.swing.JMenu AgendarConsultasMenu;
+    private javax.swing.JMenu AgendarRetornoMenu;
+    private javax.swing.JMenu CadastrarEspecialidadesMenu;
+    private javax.swing.JMenu CadastrarMedicoMenu;
+    private javax.swing.JMenu CadastrarPacienteMenu;
+    private javax.swing.JButton CancelarButton;
+    private javax.swing.JCheckBox ConvenioCheckBox;
+    private javax.swing.JTextField CpfTextField;
+    private javax.swing.JTextField DatadeNascimentoTextField;
+    private javax.swing.JTextField EnderecoTextField;
+    private javax.swing.JMenu EspecialidadesMenu;
+    private javax.swing.JComboBox<String> EstadoCivilComboBox;
+    private javax.swing.JTextArea InformacoesTextArea;
+    private javax.swing.JMenu ListarEspecialidadesMenu;
+    private javax.swing.JMenu MedicosCadastradosMenu;
+    private javax.swing.JMenu MedicosMenu;
+    private javax.swing.JTextField NomeTextField;
+    private javax.swing.JMenu PacientesCadastradosMenu;
+    private javax.swing.JMenu PacientesMenu;
+    private javax.swing.JMenu SairMenu;
+    private javax.swing.JButton SalvarButton;
+    private javax.swing.JTextField SexoTextField;
+    private javax.swing.JTextField TelefoneTextField;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -316,19 +337,6 @@ public class CadastrarPaciente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu10;
-    private javax.swing.JMenu jMenu11;
-    private javax.swing.JMenu jMenu12;
-    private javax.swing.JMenu jMenu13;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
@@ -337,13 +345,6 @@ public class CadastrarPaciente extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu5;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

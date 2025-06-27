@@ -48,7 +48,7 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
         PacientesMenu = new javax.swing.JMenu();
         PacientesCadastradosMenu = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        AgendarConsultas = new javax.swing.JMenu();
+        AgendarConsultasMenu = new javax.swing.JMenu();
         AgendarRetornoMenu = new javax.swing.JMenu();
         MedicosMenu = new javax.swing.JMenu();
         CadastrarMedicoMenu = new javax.swing.JMenu();
@@ -111,8 +111,8 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
 
         jMenuBar1.add(PacientesMenu);
 
-        AgendarConsultas.setText("Agendar Consultas");
-        jMenuBar1.add(AgendarConsultas);
+        AgendarConsultasMenu.setText("Agendar Consultas");
+        jMenuBar1.add(AgendarConsultasMenu);
 
         AgendarRetornoMenu.setText("Agendar retorno");
         jMenuBar1.add(AgendarRetornoMenu);
@@ -258,7 +258,7 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdicionarButton;
     private javax.swing.JMenu AgendaMenu;
-    private javax.swing.JMenu AgendarConsultas;
+    private javax.swing.JMenu AgendarConsultasMenu;
     private javax.swing.JMenu AgendarRetornoMenu;
     private javax.swing.JCheckBox AtendeConvenioCheckbox;
     private javax.swing.JLabel AtendeconveniolabelMenu;

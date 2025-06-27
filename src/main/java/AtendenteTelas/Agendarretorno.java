@@ -33,31 +33,31 @@ public class Agendarretorno extends javax.swing.JFrame {
         jPopupMenu3 = new javax.swing.JPopupMenu();
         jPopupMenu4 = new javax.swing.JPopupMenu();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        DataTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        EspecialidadeComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        MedicoComboBox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        ConvenioComboBox = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        PacienteComboBox = new javax.swing.JComboBox<>();
+        AgendaRetornoButton = new javax.swing.JButton();
+        CancelarButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenu9 = new javax.swing.JMenu();
-        jMenu10 = new javax.swing.JMenu();
-        jMenu11 = new javax.swing.JMenu();
-        jMenu12 = new javax.swing.JMenu();
-        jMenu13 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        PacientesMenu = new javax.swing.JMenu();
+        PacientesCadastradosMenu = new javax.swing.JMenu();
+        CadastrarPacienteMenu = new javax.swing.JMenu();
+        AgendarConsultasMenu = new javax.swing.JMenu();
+        AgendarRetornoMenu = new javax.swing.JMenu();
+        MedicosMenu = new javax.swing.JMenu();
+        CadastrarMedicoMenu = new javax.swing.JMenu();
+        MedicosCadastradosMenu = new javax.swing.JMenu();
+        EspecialidadesMenu = new javax.swing.JMenu();
+        CadastrarEspecialidaeMenu = new javax.swing.JMenu();
+        ListarEspecialidadeMenu = new javax.swing.JMenu();
+        AgendaMenu = new javax.swing.JMenu();
+        SairMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,65 +65,65 @@ public class Agendarretorno extends javax.swing.JFrame {
 
         jLabel2.setText("Medico");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        EspecialidadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setText("Especialidade:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        MedicoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel4.setText("Cônvenio");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ConvenioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setText("Paciente:");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        PacienteComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setText("Agendar retorno");
+        AgendaRetornoButton.setText("Agendar retorno");
 
-        jButton2.setText("Cancelar");
+        CancelarButton.setText("Cancelar");
 
-        jMenu6.setText("Pacientes");
+        PacientesMenu.setText("Pacientes");
 
-        jMenu1.setText("Pacientes Cadastrados");
-        jMenu6.add(jMenu1);
+        PacientesCadastradosMenu.setText("Pacientes Cadastrados");
+        PacientesMenu.add(PacientesCadastradosMenu);
 
-        jMenu2.setText("Cadastrar Paciente");
-        jMenu6.add(jMenu2);
+        CadastrarPacienteMenu.setText("Cadastrar Paciente");
+        PacientesMenu.add(CadastrarPacienteMenu);
 
-        jMenuBar1.add(jMenu6);
+        jMenuBar1.add(PacientesMenu);
 
-        jMenu4.setText("Agendar Consultas");
-        jMenuBar1.add(jMenu4);
+        AgendarConsultasMenu.setText("Agendar Consultas");
+        jMenuBar1.add(AgendarConsultasMenu);
 
-        jMenu5.setText("Agendar retorno");
-        jMenuBar1.add(jMenu5);
+        AgendarRetornoMenu.setText("Agendar retorno");
+        jMenuBar1.add(AgendarRetornoMenu);
 
-        jMenu7.setText("Médicos");
+        MedicosMenu.setText("Médicos");
 
-        jMenu8.setText("Cadastrar Médico");
-        jMenu7.add(jMenu8);
+        CadastrarMedicoMenu.setText("Cadastrar Médico");
+        MedicosMenu.add(CadastrarMedicoMenu);
 
-        jMenu9.setText("Médicos Cadastrados");
-        jMenu7.add(jMenu9);
+        MedicosCadastradosMenu.setText("Médicos Cadastrados");
+        MedicosMenu.add(MedicosCadastradosMenu);
 
-        jMenuBar1.add(jMenu7);
+        jMenuBar1.add(MedicosMenu);
 
-        jMenu10.setText("Especialidades");
+        EspecialidadesMenu.setText("Especialidades");
 
-        jMenu11.setText("Cadastrar Especialidade");
-        jMenu10.add(jMenu11);
+        CadastrarEspecialidaeMenu.setText("Cadastrar Especialidade");
+        EspecialidadesMenu.add(CadastrarEspecialidaeMenu);
 
-        jMenu12.setText("Listar Especialidades");
-        jMenu10.add(jMenu12);
+        ListarEspecialidadeMenu.setText("Listar Especialidades");
+        EspecialidadesMenu.add(ListarEspecialidadeMenu);
 
-        jMenuBar1.add(jMenu10);
+        jMenuBar1.add(EspecialidadesMenu);
 
-        jMenu13.setText("Agenda");
-        jMenuBar1.add(jMenu13);
+        AgendaMenu.setText("Agenda");
+        jMenuBar1.add(AgendaMenu);
 
-        jMenu3.setText("Sair");
-        jMenuBar1.add(jMenu3);
+        SairMenu.setText("Sair");
+        jMenuBar1.add(SairMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -137,7 +137,7 @@ public class Agendarretorno extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(ConvenioComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -145,25 +145,25 @@ public class Agendarretorno extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
-                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(MedicoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(DataTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EspecialidadeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PacienteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(AgendaRetornoButton)
                 .addGap(56, 56, 56)
-                .addComponent(jButton2)
+                .addComponent(CancelarButton)
                 .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
@@ -172,29 +172,29 @@ public class Agendarretorno extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DataTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(MedicoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(PacienteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EspecialidadeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ConvenioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(AgendaRetornoButton)
+                    .addComponent(CancelarButton))
                 .addGap(19, 19, 19))
         );
 
@@ -227,35 +227,35 @@ public class Agendarretorno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JMenu AgendaMenu;
+    private javax.swing.JButton AgendaRetornoButton;
+    private javax.swing.JMenu AgendarConsultasMenu;
+    private javax.swing.JMenu AgendarRetornoMenu;
+    private javax.swing.JMenu CadastrarEspecialidaeMenu;
+    private javax.swing.JMenu CadastrarMedicoMenu;
+    private javax.swing.JMenu CadastrarPacienteMenu;
+    private javax.swing.JButton CancelarButton;
+    private javax.swing.JComboBox<String> ConvenioComboBox;
+    private javax.swing.JTextField DataTextField;
+    private javax.swing.JComboBox<String> EspecialidadeComboBox;
+    private javax.swing.JMenu EspecialidadesMenu;
+    private javax.swing.JMenu ListarEspecialidadeMenu;
+    private javax.swing.JComboBox<String> MedicoComboBox;
+    private javax.swing.JMenu MedicosCadastradosMenu;
+    private javax.swing.JMenu MedicosMenu;
+    private javax.swing.JComboBox<String> PacienteComboBox;
+    private javax.swing.JMenu PacientesCadastradosMenu;
+    private javax.swing.JMenu PacientesMenu;
+    private javax.swing.JMenu SairMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu10;
-    private javax.swing.JMenu jMenu11;
-    private javax.swing.JMenu jMenu12;
-    private javax.swing.JMenu jMenu13;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu jPopupMenu3;
     private javax.swing.JPopupMenu jPopupMenu4;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

@@ -33,16 +33,16 @@ public class PacientesCadastrados extends javax.swing.JFrame {
         jPopupMenu3 = new javax.swing.JPopupMenu();
         jPopupMenu4 = new javax.swing.JPopupMenu();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        PacientesTable = new javax.swing.JTable();
+        EditarProntuarioButton = new javax.swing.JButton();
+        BuscarPacienteButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        PacientesCadastradosMenu = new javax.swing.JMenu();
+        SairMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PacientesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -61,18 +61,17 @@ public class PacientesCadastrados extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(PacientesTable);
 
-        jButton1.setText("Editar Prontuario");
+        EditarProntuarioButton.setText("Editar Prontuario");
 
-        jMenu1.setText("Pacientes Cadastrados");
-        jMenuBar1.add(jMenu1);
+        BuscarPacienteButton.setText("Buscar Paciente");
 
-        jMenu2.setText("Buscar Paciente");
-        jMenuBar1.add(jMenu2);
+        PacientesCadastradosMenu.setText("Pacientes Cadastrados");
+        jMenuBar1.add(PacientesCadastradosMenu);
 
-        jMenu3.setText("Sair");
-        jMenuBar1.add(jMenu3);
+        SairMenu.setText("Sair");
+        jMenuBar1.add(SairMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -83,7 +82,9 @@ public class PacientesCadastrados extends javax.swing.JFrame {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(BuscarPacienteButton)
+                .addGap(18, 18, 18)
+                .addComponent(EditarProntuarioButton)
                 .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
@@ -91,7 +92,9 @@ public class PacientesCadastrados extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EditarProntuarioButton)
+                    .addComponent(BuscarPacienteButton))
                 .addContainerGap())
         );
 
@@ -124,16 +127,16 @@ public class PacientesCadastrados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JButton BuscarPacienteButton;
+    private javax.swing.JButton EditarProntuarioButton;
+    private javax.swing.JMenu PacientesCadastradosMenu;
+    private javax.swing.JTable PacientesTable;
+    private javax.swing.JMenu SairMenu;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu jPopupMenu3;
     private javax.swing.JPopupMenu jPopupMenu4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

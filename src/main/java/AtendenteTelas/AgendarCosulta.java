@@ -42,8 +42,8 @@ public class AgendarCosulta extends javax.swing.JFrame {
         ConvenioComboBox = new javax.swing.JComboBox<>();
         PacienteLabel = new javax.swing.JLabel();
         ComboBoxPaciente = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        AgendarButton = new javax.swing.JButton();
+        CancelarButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         PacientesMenu = new javax.swing.JMenu();
         PacientesCadastradosMenu = new javax.swing.JMenu();
@@ -90,9 +90,9 @@ public class AgendarCosulta extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Agendar");
+        AgendarButton.setText("Agendar");
 
-        jButton2.setText("Cancelar");
+        CancelarButton.setText("Cancelar");
 
         PacientesMenu.setText("Pacientes");
 
@@ -172,9 +172,9 @@ public class AgendarCosulta extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(AgendarButton)
                 .addGap(37, 37, 37)
-                .addComponent(jButton2)
+                .addComponent(CancelarButton)
                 .addGap(46, 46, 46))
         );
         layout.setVerticalGroup(
@@ -204,8 +204,8 @@ public class AgendarCosulta extends javax.swing.JFrame {
                     .addComponent(ConvenioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(AgendarButton)
+                    .addComponent(CancelarButton))
                 .addGap(25, 25, 25))
         );
 
@@ -247,11 +247,13 @@ public class AgendarCosulta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AgendaMenu;
+    private javax.swing.JButton AgendarButton;
     private javax.swing.JMenu AgendarConsulta;
     private javax.swing.JMenu AgendarretornoMenu;
     private javax.swing.JMenu CadastrarEspecialidadesMenu;
     private javax.swing.JMenu CadastrarMedicoMenu;
     private javax.swing.JMenu CadastrarPacienteMenu;
+    private javax.swing.JButton CancelarButton;
     private javax.swing.JComboBox<String> ComboBoxEspecialidade;
     private javax.swing.JComboBox<String> ComboBoxPaciente;
     private javax.swing.JComboBox<String> ConvenioComboBox;
@@ -268,8 +270,6 @@ public class AgendarCosulta extends javax.swing.JFrame {
     private javax.swing.JMenu PacientesMenu;
     private javax.swing.JMenu SairMenu;
     private javax.swing.JTextField TextFieldData;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;

@@ -33,26 +33,26 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
         jPopupMenu3 = new javax.swing.JPopupMenu();
         jPopupMenu4 = new javax.swing.JPopupMenu();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        PacientesTable = new javax.swing.JTable();
+        EditarPacientesCadastradosButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         PacientesMenu = new javax.swing.JMenu();
         PacientesCadastradosMenu = new javax.swing.JMenu();
         CadastrarPacientesMenu = new javax.swing.JMenu();
         AgendarConsultasMenu = new javax.swing.JMenu();
         AgendarRetorno = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu9 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenu10 = new javax.swing.JMenu();
-        jMenu11 = new javax.swing.JMenu();
-        jMenu12 = new javax.swing.JMenu();
-        jMenu13 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        MedicosMenu = new javax.swing.JMenu();
+        CadastrarMedicoMenu = new javax.swing.JMenu();
+        MedicosCadastradosMenu = new javax.swing.JMenu();
+        EspecialideMenu = new javax.swing.JMenu();
+        CadastrarEspecialidadesMenu = new javax.swing.JMenu();
+        ListarEspecialidadeMenu = new javax.swing.JMenu();
+        AgendaMenu = new javax.swing.JMenu();
+        SairMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PacientesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -71,12 +71,12 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(PacientesTable);
 
-        jButton1.setText("Editar Pacientes Cadastrados");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        EditarPacientesCadastradosButton.setText("Editar Pacientes Cadastrados");
+        EditarPacientesCadastradosButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                EditarPacientesCadastradosButtonActionPerformed(evt);
             }
         });
 
@@ -96,31 +96,31 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
         AgendarRetorno.setText("Agendar retorno");
         jMenuBar1.add(AgendarRetorno);
 
-        jMenu7.setText("Médicos");
+        MedicosMenu.setText("Médicos");
 
-        jMenu9.setText("Cadastrar Médico");
-        jMenu7.add(jMenu9);
+        CadastrarMedicoMenu.setText("Cadastrar Médico");
+        MedicosMenu.add(CadastrarMedicoMenu);
 
-        jMenu8.setText("Médicos Cadastrados");
-        jMenu7.add(jMenu8);
+        MedicosCadastradosMenu.setText("Médicos Cadastrados");
+        MedicosMenu.add(MedicosCadastradosMenu);
 
-        jMenuBar1.add(jMenu7);
+        jMenuBar1.add(MedicosMenu);
 
-        jMenu10.setText("Especialidades");
+        EspecialideMenu.setText("Especialidades");
 
-        jMenu11.setText("Cadastrar Especialidades");
-        jMenu10.add(jMenu11);
+        CadastrarEspecialidadesMenu.setText("Cadastrar Especialidades");
+        EspecialideMenu.add(CadastrarEspecialidadesMenu);
 
-        jMenu12.setText("Listar Especialidades");
-        jMenu10.add(jMenu12);
+        ListarEspecialidadeMenu.setText("Listar Especialidades");
+        EspecialideMenu.add(ListarEspecialidadeMenu);
 
-        jMenuBar1.add(jMenu10);
+        jMenuBar1.add(EspecialideMenu);
 
-        jMenu13.setText("Agenda");
-        jMenuBar1.add(jMenu13);
+        AgendaMenu.setText("Agenda");
+        jMenuBar1.add(AgendaMenu);
 
-        jMenu3.setText("Sair");
-        jMenuBar1.add(jMenu3);
+        SairMenu.setText("Sair");
+        jMenuBar1.add(SairMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -131,7 +131,7 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(EditarPacientesCadastradosButton)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -139,16 +139,16 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(EditarPacientesCadastradosButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void EditarPacientesCadastradosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarPacientesCadastradosButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_EditarPacientesCadastradosButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,26 +176,26 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu AgendaMenu;
     private javax.swing.JMenu AgendarConsultasMenu;
     private javax.swing.JMenu AgendarRetorno;
+    private javax.swing.JMenu CadastrarEspecialidadesMenu;
+    private javax.swing.JMenu CadastrarMedicoMenu;
     private javax.swing.JMenu CadastrarPacientesMenu;
+    private javax.swing.JButton EditarPacientesCadastradosButton;
+    private javax.swing.JMenu EspecialideMenu;
+    private javax.swing.JMenu ListarEspecialidadeMenu;
+    private javax.swing.JMenu MedicosCadastradosMenu;
+    private javax.swing.JMenu MedicosMenu;
     private javax.swing.JMenu PacientesCadastradosMenu;
     private javax.swing.JMenu PacientesMenu;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu10;
-    private javax.swing.JMenu jMenu11;
-    private javax.swing.JMenu jMenu12;
-    private javax.swing.JMenu jMenu13;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
+    private javax.swing.JTable PacientesTable;
+    private javax.swing.JMenu SairMenu;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu jPopupMenu3;
     private javax.swing.JPopupMenu jPopupMenu4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

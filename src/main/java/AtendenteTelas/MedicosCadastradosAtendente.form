@@ -28,73 +28,73 @@
     </Container>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu6">
+        <Menu class="javax.swing.JMenu" name="PacientesMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pacientes"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMenu1">
+            <Menu class="javax.swing.JMenu" name="PacientesCadastradosMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pacientes Cadastrados"/>
               </Properties>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="jMenu2">
+            <Menu class="javax.swing.JMenu" name="CadastrarPacienteMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cadastrar Paciente"/>
               </Properties>
             </Menu>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu4">
+        <Menu class="javax.swing.JMenu" name="AgendarConsultasMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agendar Consultas"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu5">
+        <Menu class="javax.swing.JMenu" name="AgendarRetornoMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agendar retorno"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu7">
+        <Menu class="javax.swing.JMenu" name="MedicosMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="M&#xe9;dicos"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMenu9">
+            <Menu class="javax.swing.JMenu" name="CadastrarMedicoMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cadastrar M&#xe9;dico"/>
               </Properties>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="jMenu8">
+            <Menu class="javax.swing.JMenu" name="MedicosCadastradosMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="M&#xe9;dicos Cadastrados"/>
               </Properties>
             </Menu>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu10">
+        <Menu class="javax.swing.JMenu" name="EspecialidadesMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Especialidades"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMenu11">
+            <Menu class="javax.swing.JMenu" name="CadastrarEspecialidadesMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cadastrar Especialidades"/>
               </Properties>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="jMenu12">
+            <Menu class="javax.swing.JMenu" name="ListarEspecialidadesMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listar Especialidades"/>
               </Properties>
             </Menu>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu13">
+        <Menu class="javax.swing.JMenu" name="AgendaMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agenda"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu3">
+        <Menu class="javax.swing.JMenu" name="SairMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sair"/>
           </Properties>
@@ -131,7 +131,7 @@
                   <Component id="jScrollPane2" alignment="0" pref="580" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="EditarMedicosCadastradosButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -143,7 +143,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jScrollPane2" min="-2" pref="268" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="EditarMedicosCadastradosButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -157,7 +157,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="MedicosTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="4">
@@ -210,12 +210,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="EditarMedicosCadastradosButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Editar M&#xe9;dicos Cadastrados"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditarMedicosCadastradosButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
