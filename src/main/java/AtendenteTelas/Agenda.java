@@ -4,6 +4,8 @@
  */
 package AtendenteTelas;
 
+import Login.LoginTela;
+
 /**
  *
  * @author Alisson Dias
@@ -19,6 +21,28 @@ public class Agenda extends javax.swing.JFrame {
         initComponents();
     }
 
+
+
+
+
+
+// --- Para o JMenuItem "Cadastrar Especialidades" (Abrir CadastrarEspecialidades.java) ---
+
+
+/*
+private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {
+    // Exemplo: Clicar duas vezes na linha para abrir detalhes
+    if (evt.getClickCount() == 2) {
+        int selectedRow = ConsultasTable.getSelectedRow();
+        if (selectedRow != -1) {
+            // Obter dados da linha selecionada para passar para a tela de detalhes
+            // Por exemplo: String idConsulta = ConsultasTable.getValueAt(selectedRow, 0).toString();
+            // TelaDetalhesConsulta telaDetalhes = new TelaDetalhesConsulta(idConsulta);
+            // telaDetalhes.setVisible(true);
+        }
+    }
+}
+*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,25 +105,55 @@ public class Agenda extends javax.swing.JFrame {
         PacientesMenu.setText("Pacientes");
 
         PacientesCadastradosMenu.setText("Pacientes Cadastrados");
+        PacientesCadastradosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PacientesCadastradosMenuMouseClicked(evt);
+            }
+        });
         PacientesMenu.add(PacientesCadastradosMenu);
 
         CadastrarPacientesMenu.setText("Cadastrar Paciente");
+        CadastrarPacientesMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CadastrarPacientesMenuMouseClicked(evt);
+            }
+        });
         PacientesMenu.add(CadastrarPacientesMenu);
 
         jMenuBar1.add(PacientesMenu);
 
         AgendarConsultasMenu.setText("Agendar Consultas");
+        AgendarConsultasMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgendarConsultasMenuMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(AgendarConsultasMenu);
 
         AgendarRetornoMenu.setText("Agendar retorno");
+        AgendarRetornoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgendarRetornoMenuMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(AgendarRetornoMenu);
 
         MedicosMenu.setText("Médicos");
 
         CadastrarMedicoMenu.setText("Cadastrar Médico");
+        CadastrarMedicoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CadastrarMedicoMenuMouseClicked(evt);
+            }
+        });
         MedicosMenu.add(CadastrarMedicoMenu);
 
         MedicosCadastradosMenu.setText("Médicos Cadastrados");
+        MedicosCadastradosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MedicosCadastradosMenuMouseClicked(evt);
+            }
+        });
         MedicosMenu.add(MedicosCadastradosMenu);
 
         jMenuBar1.add(MedicosMenu);
@@ -107,17 +161,37 @@ public class Agenda extends javax.swing.JFrame {
         EspecialidadesMenu.setText("Especialidades");
 
         CadastrarEspecialidadesMenu.setText("Cadastrar Especialidades");
+        CadastrarEspecialidadesMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CadastrarEspecialidadesMenuMouseClicked(evt);
+            }
+        });
         EspecialidadesMenu.add(CadastrarEspecialidadesMenu);
 
         ListarEspecialidadesMenu.setText("Listar Especialidades");
+        ListarEspecialidadesMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListarEspecialidadesMenuMouseClicked(evt);
+            }
+        });
         EspecialidadesMenu.add(ListarEspecialidadesMenu);
 
         jMenuBar1.add(EspecialidadesMenu);
 
         AgendaMenu.setText("Agenda");
+        AgendaMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgendaMenuMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(AgendaMenu);
 
         SairMenu.setText("Sair");
+        SairMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SairMenuMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(SairMenu);
 
         setJMenuBar(jMenuBar1);
@@ -143,6 +217,75 @@ public class Agenda extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void PacientesCadastradosMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PacientesCadastradosMenuMouseClicked
+      PacientesCadastradosAtendente PacientesCadastrados = new PacientesCadastradosAtendente ();
+    PacientesCadastrados.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }//GEN-LAST:event_PacientesCadastradosMenuMouseClicked
+
+    private void CadastrarPacientesMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadastrarPacientesMenuMouseClicked
+         CadastrarPaciente CadastrarPacientes = new CadastrarPaciente();
+    CadastrarPacientes.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }//GEN-LAST:event_CadastrarPacientesMenuMouseClicked
+
+    private void AgendarConsultasMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendarConsultasMenuMouseClicked
+    
+   AgendarCosulta AgendarCosulta  = new AgendarCosulta();
+    AgendarCosulta.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }//GEN-LAST:event_AgendarConsultasMenuMouseClicked
+
+    private void AgendarRetornoMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendarRetornoMenuMouseClicked
+     Agendarretorno Agendarretorno = new Agendarretorno();
+    Agendarretorno.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }//GEN-LAST:event_AgendarRetornoMenuMouseClicked
+
+    private void CadastrarMedicoMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadastrarMedicoMenuMouseClicked
+       CadastrarMedico  CadastrarMedico = new  CadastrarMedico();
+     CadastrarMedico.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }//GEN-LAST:event_CadastrarMedicoMenuMouseClicked
+
+    private void MedicosCadastradosMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MedicosCadastradosMenuMouseClicked
+        MedicosCadastradosAtendente MedicosCadastrados= new MedicosCadastradosAtendente();
+    MedicosCadastrados.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }//GEN-LAST:event_MedicosCadastradosMenuMouseClicked
+
+    private void CadastrarEspecialidadesMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadastrarEspecialidadesMenuMouseClicked
+        Cadastrarespecialidades Cadastrarespecialidades  =  new Cadastrarespecialidades();
+    Cadastrarespecialidades.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }//GEN-LAST:event_CadastrarEspecialidadesMenuMouseClicked
+
+    private void ListarEspecialidadesMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListarEspecialidadesMenuMouseClicked
+       EspecialidadeCadastradas  EspecialidadeCadastradas = new EspecialidadeCadastradas();
+    EspecialidadeCadastradas.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }//GEN-LAST:event_ListarEspecialidadesMenuMouseClicked
+
+    private void AgendaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendaMenuMouseClicked
+    Agenda Agenda = new Agenda();
+    Agenda.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }//GEN-LAST:event_AgendaMenuMouseClicked
+
+    private void SairMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SairMenuMouseClicked
+            String[] options = {"Sim", "Não"};
+            int confirm = javax.swing.JOptionPane.showOptionDialog(this,
+                    "Tem certeza que deseja voltar ao login?",
+                    "Confirmar Saída", javax.swing.JOptionPane.YES_NO_OPTION,
+                    javax.swing.JOptionPane.QUESTION_MESSAGE,
+                    null, options, options[0]);
+            if (confirm == 0) {
+                LoginTela LoginTela = new LoginTela();
+                LoginTela.setVisible(true); // Torna a tela visível
+                this.dispose();
+            }
+    }//GEN-LAST:event_SairMenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -193,3 +336,4 @@ public class Agenda extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
+

@@ -2,6 +2,7 @@ package Daos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 
 
@@ -24,7 +25,18 @@ import java.sql.SQLException;
             }
             // Para JDBC moderno (Java 6+), o driver é carregado automaticamente com DriverManager.getConnection
         }
+          public static void closeConnection(Connection con) {
+        try {
+            if (con != null && !con.isClosed()) {
+                con.close();
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão com o banco de dados: " + e.getMessage(), "Erro de Conexão", JOptionPane.ERROR_MESSAGE);
+        }
     }
+
+    }
+
 
 
 

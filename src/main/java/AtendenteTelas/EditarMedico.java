@@ -4,6 +4,8 @@
  */
 package AtendenteTelas;
 
+import Login.LoginTela;
+
 /**
  *
  * @author Alisson Dias
@@ -17,6 +19,56 @@ public class EditarMedico extends javax.swing.JFrame {
      */
     public EditarMedico() {
         initComponents();
+        PacientesCadastrados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PacientesCadastradosMenuMouseClicked(evt);
+            }
+        });
+        CadastrarPacienteMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CadastrarPacientesMenuMouseClicked(evt);
+            }
+        });
+        AgendarConsultasMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgendarConsultasMenuMouseClicked(evt);
+            }
+        });
+        AgendarRetornoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgendarRetornoMenuMouseClicked(evt);
+            }
+        });
+        CadastarMedicoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CadastrarMedicoMenuMouseClicked(evt);
+            }
+        });
+        MedicosCadastradosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MedicosCadastradosMenuMouseClicked(evt);
+            }
+        });
+        CadastrarEspecialidades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CadastrarEspecialidadesMenuMouseClicked(evt);
+            }
+        });
+        ListarEspecialidadesMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListarEspecialidadesMenuMouseClicked(evt);
+            }
+        });
+        AgendaMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgendaMenuMouseClicked(evt);
+            }
+        });
+        SairMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SairMenuMouseClicked(evt);
+            }
+        });
     }
 
     /**
@@ -298,6 +350,75 @@ public class EditarMedico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void PacientesCadastradosMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                      
+      PacientesCadastradosAtendente PacientesCadastrados = new PacientesCadastradosAtendente ();
+    PacientesCadastrados.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }                                                     
+
+    private void CadastrarPacientesMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                    
+         CadastrarPaciente CadastrarPacientes = new CadastrarPaciente();
+    CadastrarPacientes.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }                                                   
+
+    private void AgendarConsultasMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                  
+    
+   AgendarCosulta AgendarCosulta  = new AgendarCosulta();
+    AgendarCosulta.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }                                                 
+
+    private void AgendarRetornoMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                
+     Agendarretorno Agendarretorno = new Agendarretorno();
+    Agendarretorno.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }                                               
+
+    private void CadastrarMedicoMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                 
+       CadastrarMedico  CadastrarMedico = new  CadastrarMedico();
+     CadastrarMedico.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }                                                
+
+    private void MedicosCadastradosMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                    
+        MedicosCadastradosAtendente MedicosCadastrados= new MedicosCadastradosAtendente();
+    MedicosCadastrados.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }                                                   
+
+    private void CadastrarEspecialidadesMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                         
+        Cadastrarespecialidades Cadastrarespecialidades  =  new Cadastrarespecialidades();
+    Cadastrarespecialidades.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }                                                        
+
+    private void ListarEspecialidadesMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                      
+       EspecialidadeCadastradas  EspecialidadeCadastradas = new EspecialidadeCadastradas();
+    EspecialidadeCadastradas.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }                                                     
+
+    private void AgendaMenuMouseClicked(java.awt.event.MouseEvent evt) {                                        
+    Agenda Agenda = new Agenda();
+    Agenda.setVisible(true); // Torna a tela visível
+    this.dispose();
+    }                                       
+
+    private void SairMenuMouseClicked(java.awt.event.MouseEvent evt) {
+        String[] options = {"Sim", "Não"};
+        int confirm = javax.swing.JOptionPane.showOptionDialog(this,
+                "Tem certeza que deseja voltar ao login?",
+                "Confirmar Saída", javax.swing.JOptionPane.YES_NO_OPTION,
+                javax.swing.JOptionPane.QUESTION_MESSAGE,
+                null, options, options[0]);
+        if (confirm == 0) {
+            LoginTela LoginTela = new LoginTela();
+            LoginTela.setVisible(true); // Torna a tela visível
+            this.dispose();
+        }
+    }   
+    
     private void SalvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SalvarButtonActionPerformed

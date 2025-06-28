@@ -4,12 +4,18 @@
  */
 package Login;
 
+import AtendenteTelas.Agenda;
+import Daos.LoginDAO;
+import MedicoTelas.PacientesCadastrados;
+import javax.swing.*;
+import java.util.Arrays;
+
 /**
  *
  * @author Alisson Dias
  */
 public class LoginTela extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LoginTela.class.getName());
 
     /**
@@ -47,6 +53,11 @@ public class LoginTela extends javax.swing.JFrame {
         });
 
         SairButton.setText("Sair");
+        SairButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SairButtonActionPerformed(evt);
+            }
+        });
 
         Userfield.setText("Usuario");
 
@@ -118,12 +129,42 @@ public class LoginTela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginbuttonActionPerformed
+
+        String usuario = UsuarioTextfield.getText();
+        String senha = SenhaTextField.getText();
+
+        LoginDAO loginDAO = new LoginDAO();
+
+        System.out.println("DEBUG: Usuário digitado: '" + usuario + "'");
+        System.out.println("DEBUG: Senha digitada: '" + senha + "'");
+
+        int tipoUsuario = loginDAO.verificarLogin(usuario, senha);
+
+        if (tipoUsuario == LoginDAO.ATENDENTE) {
+            // Abre a tela Agenda.java
+            Agenda telaAgenda = new Agenda(); // Supondo que Agenda é o nome da sua classe de tela
+            telaAgenda.setVisible(true);
+            this.dispose(); // Fecha a tela de login
+        } else if (tipoUsuario == LoginDAO.MEDICO) {
+            // Abre a tela PacientesCadastrados.java
+            PacientesCadastrados telaPacientes = new PacientesCadastrados(); // Supondo que PacientesCadastrados é o nome da sua classe de tela
+            telaPacientes.setVisible(true);
+            this.dispose(); // Fecha a tela de login
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuário ou senha inválidos!", "Erro de Login", JOptionPane.ERROR_MESSAGE);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_LoginbuttonActionPerformed
 
     private void UsuarioTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioTextfieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UsuarioTextfieldActionPerformed
+
+    private void SairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairButtonActionPerformed
+       
+        System.exit(0); // Este comando encerra a aplicação Java
+    
+    }//GEN-LAST:event_SairButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,7 +173,7 @@ public class LoginTela extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -141,13 +182,23 @@ public class LoginTela extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(LoginTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(LoginTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(LoginTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(LoginTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new LoginTela().setVisible(true));
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LoginTela().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -37,11 +37,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pacientes Cadastrados"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="PacientesCadastradosMenuMouseClicked"/>
+              </Events>
             </Menu>
             <Menu class="javax.swing.JMenu" name="CadastrarPacientesMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cadastrar Paciente"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CadastrarPacientesMenuMouseClicked"/>
+              </Events>
             </Menu>
           </SubComponents>
         </Menu>
@@ -49,11 +55,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Agendar Consultas"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AgendarConsultasMenuMouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="AgendarRetornoMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agendar retorno"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AgendarRetornoMenuMouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="MedicosMenu">
           <Properties>
@@ -64,11 +76,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cadastrar M&#xe9;dico"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CadastrarMedicoMenuMouseClicked"/>
+              </Events>
             </Menu>
             <Menu class="javax.swing.JMenu" name="MedicosCadastradosMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="M&#xe9;dicos Cadastrados"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MedicosCadastradosMenuMouseClicked"/>
+              </Events>
             </Menu>
           </SubComponents>
         </Menu>
@@ -81,11 +99,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cadastrar Especialidades"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CadastrarEspecialidadesMenuMouseClicked"/>
+              </Events>
             </Menu>
             <Menu class="javax.swing.JMenu" name="ListarEspecialidadesMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listar Especialidades"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ListarEspecialidadesMenuMouseClicked"/>
+              </Events>
             </Menu>
           </SubComponents>
         </Menu>
@@ -93,11 +117,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Agenda"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AgendaMenuMouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="SairMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sair"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SairMenuMouseClicked"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>
