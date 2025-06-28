@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package AtendenteTelas;
-
+import Daos.EspecialidadesDaos; 
+import java.util.List;
 import Login.LoginTela;
+
 
 /**
  *

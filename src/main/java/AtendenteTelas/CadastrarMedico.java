@@ -4,7 +4,10 @@
  */
 package AtendenteTelas;
 
+import Daos.EspecialidadesDaos;
 import Login.LoginTela;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -14,11 +17,20 @@ public class CadastrarMedico extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastrarMedico.class.getName());
 
+    
+    
+
     /**
      * Creates new form Menumain
      */
     public CadastrarMedico() {
         initComponents();
+        
+         carregarespecialidadesNoComboBox();
+         
+        // Opcional: Centralizar a janela na tela
+        setLocationRelativeTo(null);
+       
         PacientesCadastradosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PacientesCadastradosMenuMouseClicked(evt);
@@ -112,10 +124,10 @@ public class CadastrarMedico extends javax.swing.JFrame {
         DatadeNascimentoTextField = new javax.swing.JTextField();
         TelefoneTextField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        AtendeCovenioComboBox = new javax.swing.JComboBox<>();
         EstadoCivilComboBox = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        AtendeConvenioCheckBox = new javax.swing.JCheckBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         PacienteMenu = new javax.swing.JMenu();
         PacientesCadastradosMenu = new javax.swing.JMenu();
@@ -169,8 +181,6 @@ public class CadastrarMedico extends javax.swing.JFrame {
 
         jLabel11.setText("Atende Cônvenio ?");
 
-        AtendeCovenioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         EstadoCivilComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1.setText("Cancelar");
@@ -181,6 +191,8 @@ public class CadastrarMedico extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        AtendeConvenioCheckBox.setText("jCheckBox1");
 
         PacienteMenu.setText("Pacientes");
 
@@ -271,20 +283,20 @@ public class CadastrarMedico extends javax.swing.JFrame {
                                         .addComponent(SexoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(EstadoCivilComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(99, 99, 99)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel10)
                             .addComponent(DatadeNascimentoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(EspecialidadeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(EspecialidadeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AtendeCovenioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(AtendeConvenioCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,7 +306,7 @@ public class CadastrarMedico extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(NomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(AtendeCovenioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AtendeConvenioCheckBox))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -419,6 +431,32 @@ public class CadastrarMedico extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EspecialidadeComboBoxActionPerformed
 
+    private void carregarespecialidadesNoComboBox() {
+        
+        // Crie uma instância do seu ConvenioDAO
+        EspecialidadesDaos EspecialidadesDaos = new EspecialidadesDaos();
+
+        // Crie um modelo padrão para o JComboBox
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
+        // Adicione um item padrão como o primeiro (opcional, mas recomendado)
+        model.addElement("Selecione uma especialidade");
+
+        // Busque a lista de convênios usando seu ConvenioDAO
+        List<String> Especialidades = EspecialidadesDaos.BuscarTodasEspecialidades();
+
+        // Adicione cada convênio à lista do modelo do JComboBox
+        for (String especialidade : Especialidades) {
+            model.addElement(especialidade);
+        }
+
+        // Defina o modelo no seu JComboBox (o nome da sua variável JComboBox, ex: cmbConveniosList)
+        EspecialidadeComboBox.setModel(model);
+
+        // Opcional: Seleciona o primeiro item (o "Selecione um Convênio")
+       EspecialidadeComboBox.setSelectedIndex(0);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -448,7 +486,7 @@ public class CadastrarMedico extends javax.swing.JFrame {
     private javax.swing.JMenu AgendaMenu;
     private javax.swing.JMenu AgendarConsultaMenu;
     private javax.swing.JMenu AgendarRetornoMenu;
-    private javax.swing.JComboBox<String> AtendeCovenioComboBox;
+    private javax.swing.JCheckBox AtendeConvenioCheckBox;
     private javax.swing.JMenu CadastrarEspecialidadesMenu;
     private javax.swing.JMenu CadastrarMedicoMenu;
     private javax.swing.JMenu CadastrarPacienteMenu;
