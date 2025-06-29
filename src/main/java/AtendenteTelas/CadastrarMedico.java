@@ -4,7 +4,7 @@
  */
 package AtendenteTelas;
 
-import Daos.EspecialidadesDaos;
+import Daos.EspecialidadeDaoCad;
 import Daos.MedicoDaos;
 import Entidades.Especialidade;
 import Entidades.Medico;
@@ -427,7 +427,7 @@ public class CadastrarMedico extends javax.swing.JFrame {
     }   
     
   private void carregarEspecialidadesComboBox() {
-        EspecialidadesDaos especialidadeDAO = new EspecialidadesDaos(); // Verifique o nome do seu DAO!
+        EspecialidadeDaoCad especialidadeDAO = new EspecialidadeDaoCad(); // Verifique o nome do seu DAO!
         todasEspecialidadesDisponiveis = especialidadeDAO.buscarTodasEspecialidades(); // Busca objetos Especialidade
 
         // Usamos DefaultComboBoxModel para preencher o JComboBox

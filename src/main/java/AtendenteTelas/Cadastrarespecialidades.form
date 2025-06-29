@@ -140,11 +140,6 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="DataAddMenu" min="-2" pref="218" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="MedicoDisponivelLabel" min="-2" pref="112" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="MedicoDisponivelCombobox" min="-2" pref="173" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -158,7 +153,7 @@
                           <Group type="102" attributes="0">
                               <Component id="EspecialidadeLabel" min="-2" pref="78" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="EspelialidadesTextField" min="-2" pref="75" max="-2" attributes="0"/>
+                              <Component id="EspecialidadesTextField" min="-2" pref="75" max="-2" attributes="0"/>
                               <EmptySpace pref="207" max="32767" attributes="0"/>
                               <Component id="CBOlabel" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -183,7 +178,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="EspecialidadeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="CBOlabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="EspelialidadesTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EspecialidadesTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="CBOTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
@@ -191,17 +186,12 @@
                   <Component id="AtendeconveniolabelMenu" min="-2" max="-2" attributes="0"/>
                   <Component id="AtendeConvenioCheckbox" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="MedicoDisponivelLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="MedicoDisponivelCombobox" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CancelarButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="AdicionarButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -217,30 +207,10 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DataAddMenuActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="MedicoDisponivelLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="M&#xe9;dico disponivel :"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="EspecialidadeLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Especialidade:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="MedicoDisponivelCombobox">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="AtendeconveniolabelMenu">
       <Properties>
@@ -252,9 +222,9 @@
         <Property name="text" type="java.lang.String" value="CBO:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="EspelialidadesTextField">
+    <Component class="javax.swing.JTextField" name="EspecialidadesTextField">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EspelialidadesTextFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EspecialidadesTextFieldActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="CBOTextField">
@@ -276,6 +246,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Adicionar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AdicionarButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

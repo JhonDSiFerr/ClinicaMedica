@@ -86,9 +86,7 @@ public class Editarespecialidades extends javax.swing.JFrame {
         jPopupMenu4 = new javax.swing.JPopupMenu();
         jLabel1 = new javax.swing.JLabel();
         DataAdicaoTextField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        MedicosDisponiveisComboBox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         EspecialidadeTextField = new javax.swing.JTextField();
@@ -122,11 +120,7 @@ public class Editarespecialidades extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Médico disponivel :");
-
         jLabel3.setText("Especialidade:");
-
-        MedicosDisponiveisComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel4.setText("Atende por convênio ?");
 
@@ -232,22 +226,19 @@ public class Editarespecialidades extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(DataAdicaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(MedicosDisponiveisComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                                        .addComponent(DataAdicaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 25, Short.MAX_VALUE)
+                                .addGap(0, 33, Short.MAX_VALUE)
                                 .addComponent(CboTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(CancelarButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ApagarButton)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ApagarButton)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -267,16 +258,12 @@ public class Editarespecialidades extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(ConvenioCheckBox))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(MedicosDisponiveisComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CancelarButton)
-                    .addComponent(AdicionarButton)
-                    .addComponent(ApagarButton))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(ApagarButton)
+                    .addComponent(AdicionarButton))
+                .addGap(60, 60, 60))
         );
 
         pack();
@@ -413,13 +400,11 @@ public class Editarespecialidades extends javax.swing.JFrame {
     private javax.swing.JMenu EspecialidadesMenu;
     private javax.swing.JMenu ListarEspecialidadesMenu;
     private javax.swing.JMenu MedicosCadastradosMenu;
-    private javax.swing.JComboBox<String> MedicosDisponiveisComboBox;
     private javax.swing.JMenu MedicosMenu;
     private javax.swing.JMenu PacientesCadastradosMenu;
     private javax.swing.JMenu PacientesMenu;
     private javax.swing.JMenu SairMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;

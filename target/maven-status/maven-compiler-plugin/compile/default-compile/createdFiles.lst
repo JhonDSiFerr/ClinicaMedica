@@ -27,6 +27,7 @@ AtendenteTelas\EditarPaciente$1.class
 MedicoTelas\Prontuario$2.class
 AtendenteTelas\EditarMedico.class
 Login\LoginTela.class
+AtendenteTelas\Cadastrarespecialidades$15.class
 AtendenteTelas\Cadastrarespecialidades$4.class
 AtendenteTelas\EditarPaciente$2.class
 AtendenteTelas\EspecialidadeCadastradas.class
@@ -62,10 +63,10 @@ AtendenteTelas\Agenda$7.class
 AtendenteTelas\Editarespecialidades$2.class
 AtendenteTelas\EditarMedico$2.class
 AtendenteTelas\EspecialidadeCadastradas$1.class
+Daos\EspecialidadeDaoCad.class
 AtendenteTelas\Agenda$11.class
 Daos\PacienteDaos.class
 AtendenteTelas\Agenda$4.class
 AtendenteTelas\Agenda$5.class
 AtendenteTelas\Agenda$10.class
 AtendenteTelas\Editarespecialidades$4.class
-Daos\EspecialidadesDaos.class

@@ -3,9 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package AtendenteTelas;
-import Daos.EspecialidadesDaos; 
-import java.util.List; 
+import Daos.EspecialidadeDaoCad; 
+import Entidades.Especialidade;
 import Login.LoginTela;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -89,12 +90,10 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
         jPopupMenu4 = new javax.swing.JPopupMenu();
         DataAddLabel = new javax.swing.JLabel();
         DataAddMenu = new javax.swing.JTextField();
-        MedicoDisponivelLabel = new javax.swing.JLabel();
         EspecialidadeLabel = new javax.swing.JLabel();
-        MedicoDisponivelCombobox = new javax.swing.JComboBox<>();
         AtendeconveniolabelMenu = new javax.swing.JLabel();
         CBOlabel = new javax.swing.JLabel();
-        EspelialidadesTextField = new javax.swing.JTextField();
+        EspecialidadesTextField = new javax.swing.JTextField();
         CBOTextField = new javax.swing.JTextField();
         AtendeConvenioCheckbox = new javax.swing.JCheckBox();
         CancelarButton = new javax.swing.JButton();
@@ -124,19 +123,15 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
             }
         });
 
-        MedicoDisponivelLabel.setText("Médico disponivel :");
-
         EspecialidadeLabel.setText("Especialidade:");
-
-        MedicoDisponivelCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         AtendeconveniolabelMenu.setText("Atende por convênio ?");
 
         CBOlabel.setText("CBO:");
 
-        EspelialidadesTextField.addActionListener(new java.awt.event.ActionListener() {
+        EspecialidadesTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EspelialidadesTextFieldActionPerformed(evt);
+                EspecialidadesTextFieldActionPerformed(evt);
             }
         });
 
@@ -155,6 +150,11 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
         CancelarButton.setText("Cancelar");
 
         AdicionarButton.setText("Adicionar");
+        AdicionarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdicionarButtonActionPerformed(evt);
+            }
+        });
 
         PacientesMenu.setText("Pacientes");
 
@@ -216,11 +216,7 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(DataAddLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(DataAddMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(MedicoDisponivelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(MedicoDisponivelCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(DataAddMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -231,7 +227,7 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(EspecialidadeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(EspelialidadesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(EspecialidadesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
                                 .addComponent(CBOlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -249,21 +245,17 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EspecialidadeLabel)
                     .addComponent(CBOlabel)
-                    .addComponent(EspelialidadesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EspecialidadesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CBOTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(AtendeconveniolabelMenu)
                     .addComponent(AtendeConvenioCheckbox))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MedicoDisponivelLabel)
-                    .addComponent(MedicoDisponivelCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CancelarButton)
                     .addComponent(AdicionarButton))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
 
         pack();
@@ -337,6 +329,14 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
             this.dispose();
         }
     }
+    
+private void limparCampos() {
+        DataAddMenu.setText("");
+        EspecialidadesTextField.setText("");
+        CBOTextField.setText("");
+        AtendeConvenioCheckbox.setSelected(false);
+       
+    }
 
     private void DataAddMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataAddMenuActionPerformed
         // TODO add your handling code here:
@@ -350,9 +350,54 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AtendeConvenioCheckboxActionPerformed
 
-    private void EspelialidadesTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EspelialidadesTextFieldActionPerformed
+    private void EspecialidadesTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EspecialidadesTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EspelialidadesTextFieldActionPerformed
+    }//GEN-LAST:event_EspecialidadesTextFieldActionPerformed
+
+    private void AdicionarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarButtonActionPerformed
+      try {
+        // 1. Coletar os dados dos campos do formulário
+        String dataAdd = DataAddMenu.getText().trim(); // Campo de texto para Data de adição
+        String cbo = CBOTextField.getText().trim();     // Campo de texto para CBO
+        String nomeEspecialidade = EspecialidadesTextField.getText().trim(); // Campo de texto para Nome da Especialidade
+        String convenio = AtendeConvenioCheckbox.isSelected() ? "S" : "N"; // Checkbox para Convênio
+
+        // 2. Validações de entrada (MUITO IMPORTANTE!)
+        if (dataAdd.isEmpty() || cbo.isEmpty() || nomeEspecialidade.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios: Data de Adição, CBO e Especialidade.", "Campos Vazios", JOptionPane.WARNING_MESSAGE);
+            return; // Impede a continuação do método
+        }
+
+        // --- Opcional: Validações de Formato (Recomendado) ---
+        // Exemplo de validação de formato para CBO (se for numérico de 6 dígitos)
+        if (!cbo.matches("\\d{6}")) { // Verifica se CBO tem exatamente 6 dígitos numéricos
+            JOptionPane.showMessageDialog(this, "O CBO deve conter exatamente 6 dígitos numéricos.", "Erro de Formato", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Exemplo de validação simples de data (apenas para não estar vazio e ter algum padrão)
+        // Para validação de data real (DD/MM/AAAA), usar bibliotecas ou regex mais complexos.
+        // if (!dataAdd.matches("\\d{2}/\\d{2}/\\d{4}")) { /* ... */ }
+
+        // 3. Criar um objeto Especialidade com os dados coletados
+        Especialidade novaEspecialidade = new Especialidade(dataAdd, cbo, convenio, nomeEspecialidade);
+
+        // 4. Instanciar o DAO e chamar o método adicionar
+        // Use EspecialidadeDaoCad, que é o DAO que consolidamos e contém o método 'adicionar'
+        EspecialidadeDaoCad especialidadeDAO = new EspecialidadeDaoCad();
+        especialidadeDAO.adicionar(novaEspecialidade); // Chama o método de adição no DAO
+
+        // 5. Opcional: Limpar os campos após o cadastro bem-sucedido
+        limparCampos();
+
+    } catch (Exception e) {
+        // Captura qualquer erro inesperado
+        JOptionPane.showMessageDialog(this, "Ocorreu um erro inesperado ao cadastrar a especialidade: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        logger.log(java.util.logging.Level.SEVERE, "Erro ao cadastrar especialidade", e); // Loga o erro completo
+    }
+
+   // TODO add your handling code here:
+    }//GEN-LAST:event_AdicionarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -395,10 +440,8 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
     private javax.swing.JTextField DataAddMenu;
     private javax.swing.JLabel EspecialidadeLabel;
     private javax.swing.JMenu Especialidades;
-    private javax.swing.JTextField EspelialidadesTextField;
+    private javax.swing.JTextField EspecialidadesTextField;
     private javax.swing.JMenu ListarEspelidadesMenu;
-    private javax.swing.JComboBox<String> MedicoDisponivelCombobox;
-    private javax.swing.JLabel MedicoDisponivelLabel;
     private javax.swing.JMenu MedicosCadastradosMenu;
     private javax.swing.JMenu MedicosMenu;
     private javax.swing.JMenu PacientesCadastradosMenu;

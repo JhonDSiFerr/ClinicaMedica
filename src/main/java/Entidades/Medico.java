@@ -1,7 +1,5 @@
 // src/model/Medico.java
-package Entidades;
-
-// import java.util.List; // REMOVA ESTE IMPORT
+package Entidades; // Pacote correto: Entidades
 
 public class Medico {
     private String nome;
@@ -13,13 +11,13 @@ public class Medico {
     private String convenio; // 'S' ou 'N'
     private String endereco;
     private String observacoes;
-    // Removido: private List<Especialidade> especialidades;
-    private Especialidade especialidade; // NOVO: Apenas uma especialidade (objeto)
 
-    // Construtor principal (agora recebe um objeto Especialidade única)
+    private Especialidade especialidade; // Atributo: um objeto Especialidade único
+
+    // Construtor principal
     public Medico(String nome, String cpf, String crm, String dataNascimento,
                   String estadoCivil, String sexo, String convenio,
-                  String endereco, String observacoes, Especialidade especialidade) { // Tipo alterado aqui
+                  String endereco, String observacoes, Especialidade especialidade) {
         this.nome = nome;
         this.cpf = cpf;
         this.crm = crm;
@@ -29,15 +27,23 @@ public class Medico {
         this.convenio = convenio;
         this.endereco = endereco;
         this.observacoes = observacoes;
-        this.especialidade = especialidade; // Atribuição da única especialidade
+        this.especialidade = especialidade;
     }
 
-     public String getCrm() { return crm; }
-    public void setCrm(String crm) { this.crm = crm; } // O CRM será o identificador
-    
-    public String getEspecialidade() { return crm; }
-    public void setEspecialidade(Especialidade Especialidade) { this.especialidade = Especialidade; }
-    
+    // --- Getters e Setters ---
+    // O CRM será o identificador principal, mas também tem seus getters/setters
+    public String getCrm() { return crm; }
+    public void setCrm(String crm) { this.crm = crm; }
+
+    // ***** MÉTODO GETTER DA ESPECIALIDADE - CORRIGIDO AQUI! *****
+    public Especialidade getEspecialidade() { // AGORA RETORNA Especialidade
+        return especialidade;
+    }
+    public void setEspecialidade(Especialidade especialidade) { // Tipo do parâmetro correto
+        this.especialidade = especialidade;
+    }
+    // *********************************************************
+
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
 

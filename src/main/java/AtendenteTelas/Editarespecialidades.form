@@ -152,26 +152,22 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="DataAdicaoTextField" min="-2" pref="218" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel2" min="-2" pref="112" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="MedicosDisponiveisComboBox" min="-2" pref="173" max="-2" attributes="0"/>
-                                  </Group>
                               </Group>
-                              <EmptySpace pref="65" max="32767" attributes="0"/>
+                              <EmptySpace pref="72" max="32767" attributes="0"/>
                               <Component id="jLabel6" min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
                               <Component id="CboTextfield" min="-2" pref="163" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="CancelarButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="ApagarButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -200,18 +196,13 @@
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <Component id="ConvenioCheckBox" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="MedicosDisponiveisComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CancelarButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="AdicionarButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ApagarButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AdicionarButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -227,30 +218,10 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DataAdicaoTextFieldActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="M&#xe9;dico disponivel :"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Especialidade:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="MedicosDisponiveisComboBox">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
