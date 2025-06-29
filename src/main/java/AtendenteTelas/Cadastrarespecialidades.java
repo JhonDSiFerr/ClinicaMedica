@@ -38,11 +38,7 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
                 AgendarConsultasMenuMouseClicked(evt);
             }
         });
-        AgendarRetornoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AgendarRetornoMenuMouseClicked(evt);
-            }
-        });
+    
         CadastrarMedicoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CadastrarMedicoMenuMouseClicked(evt);
@@ -103,7 +99,6 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
         PacientesCadastradosMenu = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         AgendarConsultasMenu = new javax.swing.JMenu();
-        AgendarRetornoMenu = new javax.swing.JMenu();
         MedicosMenu = new javax.swing.JMenu();
         CadastrarMedicoMenu = new javax.swing.JMenu();
         MedicosCadastradosMenu = new javax.swing.JMenu();
@@ -168,9 +163,6 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
 
         AgendarConsultasMenu.setText("Agendar Consultas");
         jMenuBar1.add(AgendarConsultasMenu);
-
-        AgendarRetornoMenu.setText("Agendar retorno");
-        jMenuBar1.add(AgendarRetornoMenu);
 
         MedicosMenu.setText("Médicos");
 
@@ -280,11 +272,7 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
     this.dispose();
     }
 
-    private void AgendarRetornoMenuMouseClicked(java.awt.event.MouseEvent evt) {
-     Agendarretorno Agendarretorno = new Agendarretorno();
-    Agendarretorno.setVisible(true); // Torna a tela visível
-    this.dispose();
-    }
+   
 
     private void CadastrarMedicoMenuMouseClicked(java.awt.event.MouseEvent evt) {
        CadastrarMedico  CadastrarMedico = new  CadastrarMedico();
@@ -428,7 +416,6 @@ private void limparCampos() {
     private javax.swing.JButton AdicionarButton;
     private javax.swing.JMenu AgendaMenu;
     private javax.swing.JMenu AgendarConsultasMenu;
-    private javax.swing.JMenu AgendarRetornoMenu;
     private javax.swing.JCheckBox AtendeConvenioCheckbox;
     private javax.swing.JLabel AtendeconveniolabelMenu;
     private javax.swing.JTextField CBOTextField;

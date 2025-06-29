@@ -4,7 +4,18 @@
  */
 package AtendenteTelas;
 
+import Daos.ConsultaDAO;
+import Daos.EspecialidadeDaoCad;
+import Daos.MedicoDaos;
+import Daos.PacienteDaos;
+import Entidades.Consulta;
+import Entidades.Especialidade;
+import Entidades.Medico;
+import Entidades.Paciente;
 import Login.LoginTela;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +30,22 @@ public class AgendarCosulta extends javax.swing.JFrame {
      */
     public AgendarCosulta() {
         initComponents();
+        
+        setLocationRelativeTo(null); // Centraliza a tela
 
+        // Adicionando listeners de mouse aos menus (já estão no seu código)
+        // ...
+
+        // NOVO: Chamar métodos para popular os ComboBoxes ao iniciar a tela
+        carregarEspecialidadesComboBox();
+        carregarMedicosComboBox();
+        carregarPacientesComboBox();
+        carregarConveniosComboBox(); // Para o ComboBox de Convênio (String simples)
+
+        // Adicionar listener para o botão "Agendar"
+        
+        
+        
             // Adicionando listeners de mouse aos menus
             PacientesCadastradosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -36,11 +62,8 @@ public class AgendarCosulta extends javax.swing.JFrame {
                     AgendarConsultasMenuMouseClicked(evt);
                 }
             });
-            AgendarretornoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    AgendarRetornoMenuMouseClicked(evt);
-                }
-            });
+           
+            
             CadastrarMedicoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     CadastrarMedicoMenuMouseClicked(evt);
@@ -99,12 +122,12 @@ public class AgendarCosulta extends javax.swing.JFrame {
         ComboBoxPaciente = new javax.swing.JComboBox<>();
         AgendarButton = new javax.swing.JButton();
         CancelarButton = new javax.swing.JButton();
+        ReornoCheckBox = new javax.swing.JCheckBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         PacientesMenu = new javax.swing.JMenu();
         PacientesCadastradosMenu = new javax.swing.JMenu();
         CadastrarPacienteMenu = new javax.swing.JMenu();
         AgendarConsulta = new javax.swing.JMenu();
-        AgendarretornoMenu = new javax.swing.JMenu();
         MedicosMenu = new javax.swing.JMenu();
         CadastrarMedicoMenu = new javax.swing.JMenu();
         MedicosCadastrados = new javax.swing.JMenu();
@@ -126,19 +149,12 @@ public class AgendarCosulta extends javax.swing.JFrame {
 
         jLabel2.setText("Medico");
 
-        ComboBoxEspecialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         EspecialidadeLabel.setText("Especialidade:");
-
-        MedicoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         ConvenioLabel.setText("Cônvenio");
 
-        ConvenioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         PacienteLabel.setText("Paciente:");
 
-        ComboBoxPaciente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ComboBoxPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxPacienteActionPerformed(evt);
@@ -146,8 +162,20 @@ public class AgendarCosulta extends javax.swing.JFrame {
         });
 
         AgendarButton.setText("Agendar");
+        AgendarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgendarButtonActionPerformed(evt);
+            }
+        });
 
         CancelarButton.setText("Cancelar");
+
+        ReornoCheckBox.setText("Retorno?");
+        ReornoCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReornoCheckBoxActionPerformed(evt);
+            }
+        });
 
         PacientesMenu.setText("Pacientes");
 
@@ -161,9 +189,6 @@ public class AgendarCosulta extends javax.swing.JFrame {
 
         AgendarConsulta.setText("Agendar Consultas");
         jMenuBar1.add(AgendarConsulta);
-
-        AgendarretornoMenu.setText("Agendar retorno");
-        jMenuBar1.add(AgendarretornoMenu);
 
         MedicosMenu.setText("Médicos");
 
@@ -223,7 +248,8 @@ public class AgendarCosulta extends javax.swing.JFrame {
                 .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PacienteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ComboBoxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboBoxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ReornoCheckBox))
                 .addGap(17, 17, 17))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -252,7 +278,8 @@ public class AgendarCosulta extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EspecialidadeLabel)
-                    .addComponent(ComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ReornoCheckBox))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ConvenioLabel)
@@ -289,12 +316,7 @@ public class AgendarCosulta extends javax.swing.JFrame {
     this.dispose();
     }                                                 
 
-    private void AgendarRetornoMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                
-     Agendarretorno Agendarretorno = new Agendarretorno();
-    Agendarretorno.setVisible(true); // Torna a tela visível
-    this.dispose();
-    }                                               
-
+   
     private void CadastrarMedicoMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                 
        CadastrarMedico  CadastrarMedico = new  CadastrarMedico();
      CadastrarMedico.setVisible(true); // Torna a tela visível
@@ -337,7 +359,70 @@ public class AgendarCosulta extends javax.swing.JFrame {
             LoginTela.setVisible(true); // Torna a tela visível
             this.dispose();
         }
+        
+        
+        
+        
     }   
+    
+     private void carregarEspecialidadesComboBox() {
+        EspecialidadeDaoCad especialidadeDAO = new EspecialidadeDaoCad();
+        List<Especialidade> especialidades = especialidadeDAO.buscarTodasEspecialidades();
+
+        DefaultComboBoxModel<Especialidade> model = new DefaultComboBoxModel<>();
+        model.addElement(new Especialidade("", "Selecione a Especialidade")); // Item padrão
+        for (Especialidade esp : especialidades) {
+            model.addElement(esp);
+        }
+        ComboBoxEspecialidade.setModel(model);
+        ComboBoxEspecialidade.setSelectedIndex(0);
+    }
+      private void carregarMedicosComboBox() {
+        MedicoDaos medicoDAO = new MedicoDaos();
+        List<Medico> medicos = medicoDAO.buscarTodosMedicos();
+
+        DefaultComboBoxModel<Medico> model = new DefaultComboBoxModel<>();
+        model.addElement(new Medico("", "", "Selecione o Médico", "", "", "", "", "", "", null)); // Item padrão (CRM vazio)
+        for (Medico med : medicos) {
+            model.addElement(med);
+        }
+        MedicoComboBox.setModel(model);
+        MedicoComboBox.setSelectedIndex(0);
+    }
+
+    private void carregarPacientesComboBox() {
+        PacienteDaos pacienteDAO = new PacienteDaos();
+        List<Paciente> pacientes = pacienteDAO.buscarTodosPacientes();
+
+        DefaultComboBoxModel<Paciente> model = new DefaultComboBoxModel<>();
+       
+model.addElement(new Paciente("Selecione o Paciente", "", "", "", "", "", "", "", "", "", null));
+//                                                   ^^^ CPF como string vazia ou null
+        for (Paciente pac : pacientes) {
+            model.addElement(pac);
+        }
+        ComboBoxPaciente.setModel(model);
+        ComboBoxPaciente.setSelectedIndex(0);
+    }
+
+    private void carregarConveniosComboBox() {
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+        model.addElement("Selecione o Convênio"); // Item padrão
+        model.addElement("Unimed");
+        model.addElement("Amil");
+        model.addElement("Bradesco Saúde");
+        model.addElement("BrasilMedSaude");
+        model.addElement("Particular");
+        // Adicione outros convênios conforme necessário ou busque de uma tabela 'convenios'
+        ConvenioComboBox.setModel(model);
+        ConvenioComboBox.setSelectedIndex(0);
+    }
+    // NOVO MÉTODO PARA LIMPAR CAMPOS ESPECÍFICOS DE AGENDAMENTO
+    // --- Método de Ação do Botão "Agendar" ---
+    
+    
+    
+    
     
     private void TextFieldDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldDataActionPerformed
         // TODO add your handling code here:
@@ -346,6 +431,151 @@ public class AgendarCosulta extends javax.swing.JFrame {
     private void ComboBoxPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxPacienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxPacienteActionPerformed
+
+    private void AgendarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendarButtonActionPerformed
+      try {
+            // 1. Coletar dados da tela
+            String dataConsulta = TextFieldData.getText().trim();
+            // TODO: Adicione um JTextField ou ComboBox para a HORA da consulta
+            // Por enquanto, vou usar um valor fictício ou adicionar um campo se você me disser o nome
+            String horaConsulta = "00:00"; // Substitua isso pela coleta do campo de hora
+
+            // Coletar objetos selecionados dos ComboBoxes
+            Especialidade especialidadeSelecionada = (Especialidade) ComboBoxEspecialidade.getSelectedItem();
+            Medico medicoSelecionado = (Medico) MedicoComboBox.getSelectedItem();
+            Paciente pacienteSelecionado = (Paciente) ComboBoxPaciente.getSelectedItem();
+            String convenioSelecionado = (String) ConvenioComboBox.getSelectedItem(); // String pura
+
+            // TODO: Se você tiver um campo de Observações na tela, colete aqui.
+            String observacoes = ""; // Campo de Observações (ex: txaObservacoes.getText().trim())
+
+            // 2. Validações básicas (aprimore conforme necessário)
+            if (dataConsulta.isEmpty() || dataConsulta.equals("DD/MM/AAAA")) { // Exemplo de validação de data
+                JOptionPane.showMessageDialog(this, "Por favor, informe a data da consulta.", "Campo Vazio", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (especialidadeSelecionada == null || especialidadeSelecionada.getCbo().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, selecione a especialidade.", "Seleção Inválida", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (medicoSelecionado == null || medicoSelecionado.getCrm().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, selecione o médico.", "Seleção Inválida", JOptionPane.WARNING_MESSAGE);
+                return;
+            
+            }if (pacienteSelecionado == null || pacienteSelecionado.getCpf() == null || pacienteSelecionado.getCpf().isEmpty()) {
+             JOptionPane.showMessageDialog(this, "Por favor, selecione o paciente.", "Seleção Inválida", JOptionPane.WARNING_MESSAGE);
+             return;
+             }
+            if (convenioSelecionado == null || convenioSelecionado.equals("Selecione o Convênio")) {
+                JOptionPane.showMessageDialog(this, "Por favor, selecione o convênio.", "Seleção Inválida", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // 3. Criar o objeto Consulta
+          String eRetorno = ReornoCheckBox.isSelected() ? "S" : "N"; // Certifique-se que esta linha existe!
+
+    Consulta novaConsulta = new Consulta(
+    dataConsulta, horaConsulta, medicoSelecionado,
+    pacienteSelecionado, especialidadeSelecionada,
+    convenioSelecionado, observacoes, eRetorno // <-- AGORA COM O PARÂMETRO 'eRetorno'
+      );
+            // 4. Instanciar e chamar o ConsultaDAO para agendar
+            ConsultaDAO consultaDAO = new ConsultaDAO();
+            consultaDAO.agendar(novaConsulta);
+
+            // 5. Limpar campos após sucesso
+            limparCamposAgendarConsulta(); // Um novo método de limpeza
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro ao agendar a consulta: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            logger.log(java.util.logging.Level.SEVERE, "Erro ao agendar consulta", e);
+        }
+    }
+
+    // NOVO MÉTODO PARA LIMPAR CAMPOS ESPECÍFICOS DE AGENDAMENTO
+    private void limparCamposAgendarConsulta() {
+        TextFieldData.setText("");
+        // Limpar campo de hora, se houver
+        ComboBoxEspecialidade.setSelectedIndex(0);
+        MedicoComboBox.setSelectedIndex(0);
+        ComboBoxPaciente.setSelectedIndex(0);
+        ConvenioComboBox.setSelectedIndex(0);
+        // Limpar campo de observações, se houver
+      // TODO add your handling code here:
+    }//GEN-LAST:event_AgendarButtonActionPerformed
+
+    private void ReornoCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReornoCheckBoxActionPerformed
+           if (ReornoCheckBox.isSelected()) {
+        // Lógica a ser executada quando o checkbox é MARCADO
+        
+        Paciente pacienteSelecionado = (Paciente) ComboBoxPaciente.getSelectedItem();
+
+        // Valida se um paciente válido foi selecionado (não é o item "Selecione o Paciente")
+        if (pacienteSelecionado == null || pacienteSelecionado.getCpf() == null || pacienteSelecionado.getCpf().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecione um paciente antes de marcar 'Retorno'.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            ReornoCheckBox.setSelected(false); // Desmarca o checkbox se o paciente não estiver selecionado
+            return;
+        }
+
+        try {
+            ConsultaDAO consultaDAO = new ConsultaDAO();
+            Consulta ultimaConsulta = consultaDAO.buscarUltimaConsultaDoPaciente(pacienteSelecionado.getCpf());
+
+            if (ultimaConsulta != null) {
+                // --- AQUI ESTÁ A CORREÇÃO PRINCIPAL ---
+
+                // 1. Encontrar o objeto Medico correspondente no MedicoComboBox
+                // Percorre os itens do modelo do MedicoComboBox para encontrar o Medico com o mesmo CRM
+                boolean medicoEncontrado = false;
+                for (int i = 0; i < MedicoComboBox.getModel().getSize(); i++) {
+                    Medico medicoNoComboBox = (Medico) MedicoComboBox.getModel().getElementAt(i);
+                    if (medicoNoComboBox != null && medicoNoComboBox.getCrm() != null &&
+                        medicoNoComboBox.getCrm().equals(ultimaConsulta.getMedico().getCrm())) {
+                        
+                        MedicoComboBox.setSelectedItem(medicoNoComboBox); // Seleciona a instância correta
+                        medicoEncontrado = true;
+                        break;
+                    }
+                }
+                if (!medicoEncontrado) {
+                    JOptionPane.showMessageDialog(this, "Médico da última consulta (" + ultimaConsulta.getMedico().getCrm() + ") não encontrado na lista atual de médicos.", "Retorno Automático", JOptionPane.WARNING_MESSAGE);
+                }
+
+                // 2. Encontrar o objeto Especialidade correspondente no ComboBoxEspecialidade
+                // Percorre os itens do modelo do ComboBoxEspecialidade para encontrar a Especialidade com o mesmo CBO
+                boolean especialidadeEncontrada = false;
+                for (int i = 0; i < ComboBoxEspecialidade.getModel().getSize(); i++) {
+                    Especialidade especialidadeNoComboBox = (Especialidade) ComboBoxEspecialidade.getModel().getElementAt(i);
+                    if (especialidadeNoComboBox != null && especialidadeNoComboBox.getCbo() != null &&
+                        especialidadeNoComboBox.getCbo().equals(ultimaConsulta.getEspecialidade().getCbo())) {
+                        
+                        ComboBoxEspecialidade.setSelectedItem(especialidadeNoComboBox); // Seleciona a instância correta
+                        especialidadeEncontrada = true;
+                        break;
+                    }
+                }
+                if (!especialidadeEncontrada) {
+                    JOptionPane.showMessageDialog(this, "Especialidade da última consulta (" + ultimaConsulta.getEspecialidade().getCbo() + ") não encontrada na lista atual de especialidades.", "Retorno Automático", JOptionPane.WARNING_MESSAGE);
+                }
+                
+                JOptionPane.showMessageDialog(this, "Dados da última consulta do paciente pré-preenchidos (CRM: " + ultimaConsulta.getMedico().getCrm() + ", CBO: " + ultimaConsulta.getEspecialidade().getCbo() + ")!", "Retorno Automático", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Não foi encontrada uma consulta anterior para este paciente para pré-preencher.", "Retorno Automático", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao buscar última consulta para pré-preenchimento: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            logger.log(java.util.logging.Level.SEVERE, "Erro ao buscar última consulta para retorno", ex);
+        }
+
+    } else {
+        // Lógica a ser executada quando o checkbox é DESMARCADO
+        // Limpa as seleções de Médico e Especialidade
+        MedicoComboBox.setSelectedIndex(0); // Volta para "Selecione o Médico"
+        ComboBoxEspecialidade.setSelectedIndex(0); // Volta para "Selecione a Especialidade"
+        JOptionPane.showMessageDialog(this, "Opção 'Retorno' desmarcada. Campos de Médico e Especialidade resetados.", "Informação", JOptionPane.INFORMATION_MESSAGE);
+    }
+     // TODO add your handling code here:
+    }//GEN-LAST:event_ReornoCheckBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,25 +606,25 @@ public class AgendarCosulta extends javax.swing.JFrame {
     private javax.swing.JMenu AgendaMenu;
     private javax.swing.JButton AgendarButton;
     private javax.swing.JMenu AgendarConsulta;
-    private javax.swing.JMenu AgendarretornoMenu;
     private javax.swing.JMenu CadastrarEspecialidadesMenu;
     private javax.swing.JMenu CadastrarMedicoMenu;
     private javax.swing.JMenu CadastrarPacienteMenu;
     private javax.swing.JButton CancelarButton;
-    private javax.swing.JComboBox<String> ComboBoxEspecialidade;
-    private javax.swing.JComboBox<String> ComboBoxPaciente;
+    private javax.swing.JComboBox<Entidades.Especialidade> ComboBoxEspecialidade;
+    private javax.swing.JComboBox<Entidades.Paciente> ComboBoxPaciente;
     private javax.swing.JComboBox<String> ConvenioComboBox;
     private javax.swing.JLabel ConvenioLabel;
     private javax.swing.JLabel DataLabel;
     private javax.swing.JLabel EspecialidadeLabel;
     private javax.swing.JMenu EspecialidadesMenu;
     private javax.swing.JMenu ListarEspecialidadesMenus;
-    private javax.swing.JComboBox<String> MedicoComboBox;
+    private javax.swing.JComboBox<Entidades.Medico> MedicoComboBox;
     private javax.swing.JMenu MedicosCadastrados;
     private javax.swing.JMenu MedicosMenu;
     private javax.swing.JLabel PacienteLabel;
     private javax.swing.JMenu PacientesCadastradosMenu;
     private javax.swing.JMenu PacientesMenu;
+    private javax.swing.JCheckBox ReornoCheckBox;
     private javax.swing.JMenu SairMenu;
     private javax.swing.JTextField TextFieldData;
     private javax.swing.JLabel jLabel2;

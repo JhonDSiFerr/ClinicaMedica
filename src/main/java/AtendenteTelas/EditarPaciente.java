@@ -34,11 +34,7 @@ public class EditarPaciente extends javax.swing.JFrame {
                 AgendarConsultasMenuMouseClicked(evt);
             }
         });
-        AgendarRetornoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AgendarRetornoMenuMouseClicked(evt);
-            }
-        });
+        
         CadastrarMedicoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CadastrarMedicoMenuMouseClicked(evt);
@@ -118,7 +114,6 @@ public class EditarPaciente extends javax.swing.JFrame {
         PacientesCadastradosMenu = new javax.swing.JMenu();
         CadastrarPacienteMenu = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-        AgendarRetornoMenu = new javax.swing.JMenu();
         MedicoMenu = new javax.swing.JMenu();
         CadastrarMedicoMenu = new javax.swing.JMenu();
         MedicosCadastradosMenu = new javax.swing.JMenu();
@@ -188,9 +183,6 @@ public class EditarPaciente extends javax.swing.JFrame {
 
         jMenu4.setText("Agendar Consultas ");
         jMenuBar1.add(jMenu4);
-
-        AgendarRetornoMenu.setText("Agendar retorno");
-        jMenuBar1.add(AgendarRetornoMenu);
 
         MedicoMenu.setText("Médicos");
 
@@ -348,11 +340,7 @@ public class EditarPaciente extends javax.swing.JFrame {
     this.dispose();
     }                                                 
 
-    private void AgendarRetornoMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                
-     Agendarretorno Agendarretorno = new Agendarretorno();
-    Agendarretorno.setVisible(true); // Torna a tela visível
-    this.dispose();
-    }                                               
+                                               
 
     private void CadastrarMedicoMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                 
        CadastrarMedico  CadastrarMedico = new  CadastrarMedico();
@@ -432,7 +420,6 @@ public class EditarPaciente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu AgendarRetornoMenu;
     private javax.swing.JButton ApagarButton;
     private javax.swing.JMenu CadastrarEspecialidadesMenu;
     private javax.swing.JMenu CadastrarMedicoMenu;

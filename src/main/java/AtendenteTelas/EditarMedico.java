@@ -34,11 +34,7 @@ public class EditarMedico extends javax.swing.JFrame {
                 AgendarConsultasMenuMouseClicked(evt);
             }
         });
-        AgendarRetornoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AgendarRetornoMenuMouseClicked(evt);
-            }
-        });
+       
         CadastarMedicoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CadastrarMedicoMenuMouseClicked(evt);
@@ -122,7 +118,6 @@ public class EditarMedico extends javax.swing.JFrame {
         PacientesCadastrados = new javax.swing.JMenu();
         CadastrarPacienteMenu = new javax.swing.JMenu();
         AgendarConsultasMenu = new javax.swing.JMenu();
-        AgendarRetornoMenu = new javax.swing.JMenu();
         MedicosMenu = new javax.swing.JMenu();
         CadastarMedicoMenu = new javax.swing.JMenu();
         MedicosCadastradosMenu = new javax.swing.JMenu();
@@ -198,9 +193,6 @@ public class EditarMedico extends javax.swing.JFrame {
 
         AgendarConsultasMenu.setText("Agendar Consultas ");
         jMenuBar1.add(AgendarConsultasMenu);
-
-        AgendarRetornoMenu.setText("Agendar retorno");
-        jMenuBar1.add(AgendarRetornoMenu);
 
         MedicosMenu.setText("Médicos");
 
@@ -367,13 +359,7 @@ public class EditarMedico extends javax.swing.JFrame {
    AgendarCosulta AgendarCosulta  = new AgendarCosulta();
     AgendarCosulta.setVisible(true); // Torna a tela visível
     this.dispose();
-    }                                                 
-
-    private void AgendarRetornoMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                
-     Agendarretorno Agendarretorno = new Agendarretorno();
-    Agendarretorno.setVisible(true); // Torna a tela visível
-    this.dispose();
-    }                                               
+    }                                                                                          
 
     private void CadastrarMedicoMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                 
        CadastrarMedico  CadastrarMedico = new  CadastrarMedico();
@@ -455,7 +441,6 @@ public class EditarMedico extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AgendaMenu;
     private javax.swing.JMenu AgendarConsultasMenu;
-    private javax.swing.JMenu AgendarRetornoMenu;
     private javax.swing.JButton ApagarButton;
     private javax.swing.JComboBox<String> AtendenteConvenioComboBox;
     private javax.swing.JTextField CRMTextField;

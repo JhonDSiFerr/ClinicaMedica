@@ -4,9 +4,11 @@ MedicoTelas\Prontuario$3.class
 AtendenteTelas\Cadastrarespecialidades$3.class
 MedicoTelas\PacientesCadastrados$1.class
 Entidades\Paciente.class
+AtendenteTelas\AgendarCosulta$13.class
 AtendenteTelas\Agendarretorno.class
 AtendenteTelas\EditarCosulta.class
 AtendenteTelas\Editarespecialidades$1.class
+AtendenteTelas\AgendarCosulta$14.class
 AtendenteTelas\Agenda$1.class
 AtendenteTelas\CadastrarPaciente$1.class
 AtendenteTelas\EditarMedico$1.class
@@ -43,13 +45,13 @@ AtendenteTelas\CadastrarMedico$1.class
 AtendenteTelas\AgendarCosulta.class
 AtendenteTelas\Agenda$3.class
 AtendenteTelas\CadastrarPaciente.class
-Entidades\consulta.class
 Entidades\Especialidade.class
 AtendenteTelas\PacientesCadastradosAtendente$1.class
 AtendenteTelas\MedicosCadastradosAtendente$1.class
 MedicoTelas\BuscarPaciente$2.class
 AtendenteTelas\Cadastrarespecialidades$1.class
 MedicoTelas\Prontuario$1.class
+Entidades\Consulta.class
 Entidades\Login.class
 AtendenteTelas\Agenda$2.class
 AtendenteTelas\EditarCosulta$1.class
@@ -58,6 +60,7 @@ AtendenteTelas\PacientesCadastradosAtendente.class
 MedicoTelas\BuscarPaciente.class
 AtendenteTelas\Editarespecialidades.class
 AtendenteTelas\Cadastrarespecialidades.class
+Daos\ConsultaDAO.class
 AtendenteTelas\Editarespecialidades$5.class
 AtendenteTelas\Agenda$7.class
 AtendenteTelas\Editarespecialidades$2.class

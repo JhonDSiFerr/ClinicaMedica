@@ -15,9 +15,9 @@ public class Medico {
     private Especialidade especialidade; // Atributo: um objeto Especialidade único
 
     // Construtor principal
-    public Medico(String nome, String cpf, String crm, String dataNascimento,
+      public Medico(String nome, String cpf, String crm, String dataNascimento,
                   String estadoCivil, String sexo, String convenio,
-                  String endereco, String observacoes, Especialidade especialidade) {
+                  String endereco, String observacoes, Especialidade especialidade) { // <--- ESTE CONSTRUTOR
         this.nome = nome;
         this.cpf = cpf;
         this.crm = crm;
@@ -27,7 +27,7 @@ public class Medico {
         this.convenio = convenio;
         this.endereco = endereco;
         this.observacoes = observacoes;
-        this.especialidade = especialidade;
+        this.especialidade = especialidade; // Atribui o objeto Especialidade
     }
 
     // --- Getters e Setters ---
@@ -67,4 +67,10 @@ public class Medico {
 
     public String getObservacoes() { return observacoes; }
     public void setObservacoes(String observacoes) { this.observacoes = observacoes; }
+    
+    @Override
+public String toString() {
+    return nome + " (CRM: " + crm + ")"; // Exibe o nome e CRM no ComboBox
+}
+
 }

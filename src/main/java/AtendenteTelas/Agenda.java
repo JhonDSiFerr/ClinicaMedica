@@ -64,7 +64,6 @@ private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {
         PacientesCadastradosMenu = new javax.swing.JMenu();
         CadastrarPacientesMenu = new javax.swing.JMenu();
         AgendarConsultasMenu = new javax.swing.JMenu();
-        AgendarRetornoMenu = new javax.swing.JMenu();
         MedicosMenu = new javax.swing.JMenu();
         CadastrarMedicoMenu = new javax.swing.JMenu();
         MedicosCadastradosMenu = new javax.swing.JMenu();
@@ -129,14 +128,6 @@ private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {
             }
         });
         jMenuBar1.add(AgendarConsultasMenu);
-
-        AgendarRetornoMenu.setText("Agendar retorno");
-        AgendarRetornoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AgendarRetornoMenuMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(AgendarRetornoMenu);
 
         MedicosMenu.setText("Médicos");
 
@@ -237,12 +228,6 @@ private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {
     this.dispose();
     }//GEN-LAST:event_AgendarConsultasMenuMouseClicked
 
-    private void AgendarRetornoMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendarRetornoMenuMouseClicked
-     Agendarretorno Agendarretorno = new Agendarretorno();
-    Agendarretorno.setVisible(true); // Torna a tela visível
-    this.dispose();
-    }//GEN-LAST:event_AgendarRetornoMenuMouseClicked
-
     private void CadastrarMedicoMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadastrarMedicoMenuMouseClicked
        CadastrarMedico  CadastrarMedico = new  CadastrarMedico();
      CadastrarMedico.setVisible(true); // Torna a tela visível
@@ -315,7 +300,6 @@ private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AgendaMenu;
     private javax.swing.JMenu AgendarConsultasMenu;
-    private javax.swing.JMenu AgendarRetornoMenu;
     private javax.swing.JMenu CadastrarEspecialidadesMenu;
     private javax.swing.JMenu CadastrarMedicoMenu;
     private javax.swing.JMenu CadastrarPacientesMenu;

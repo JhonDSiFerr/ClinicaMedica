@@ -59,14 +59,6 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AgendarConsultasMenuMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="AgendarRetornoMenu">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Agendar retorno"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AgendarRetornoMenuMouseClicked"/>
-          </Events>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="MedicosMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="M&#xe9;dicos"/>
