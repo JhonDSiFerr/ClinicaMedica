@@ -5,9 +5,13 @@
 package AtendenteTelas;
 
 import Daos.EspecialidadesDaos;
+import Daos.MedicoDaos;
+import Entidades.Especialidade;
+import Entidades.Medico;
 import Login.LoginTela;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,7 +20,7 @@ import javax.swing.DefaultComboBoxModel;
 public class CadastrarMedico extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastrarMedico.class.getName());
-
+    private List<Especialidade> todasEspecialidadesDisponiveis;
     
     
 
@@ -26,10 +30,12 @@ public class CadastrarMedico extends javax.swing.JFrame {
     public CadastrarMedico() {
         initComponents();
         
-         carregarespecialidadesNoComboBox();
-         
-        // Opcional: Centralizar a janela na tela
         setLocationRelativeTo(null);
+
+        carregarEstadoCivilComboBox();
+        carregarSexoComboBox();
+        carregarEspecialidadesComboBox(); 
+    
        
         PacientesCadastradosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -112,11 +118,9 @@ public class CadastrarMedico extends javax.swing.JFrame {
         NomeTextField = new javax.swing.JTextField();
         CpfTextField = new javax.swing.JTextField();
         EnderecoTextField = new javax.swing.JTextField();
-        SexoTextField = new javax.swing.JTextField();
         CrmTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        EspecialidadeComboBox = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ObservacoesTextArea = new javax.swing.JTextArea();
@@ -126,8 +130,10 @@ public class CadastrarMedico extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         EstadoCivilComboBox = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        SalvarButton = new javax.swing.JButton();
         AtendeConvenioCheckBox = new javax.swing.JCheckBox();
+        SexoComboBox = new javax.swing.JComboBox<>();
+        EspecialidadeComboBox = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         PacienteMenu = new javax.swing.JMenu();
         PacientesCadastradosMenu = new javax.swing.JMenu();
@@ -164,13 +170,6 @@ public class CadastrarMedico extends javax.swing.JFrame {
 
         jLabel8.setText("Especialidade:");
 
-        EspecialidadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        EspecialidadeComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EspecialidadeComboBoxActionPerformed(evt);
-            }
-        });
-
         jLabel9.setText("Observações:");
 
         ObservacoesTextArea.setColumns(20);
@@ -185,14 +184,16 @@ public class CadastrarMedico extends javax.swing.JFrame {
 
         jButton1.setText("Cancelar");
 
-        jButton2.setText("Salvar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        SalvarButton.setText("Salvar");
+        SalvarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                SalvarButtonActionPerformed(evt);
             }
         });
 
         AtendeConvenioCheckBox.setText("jCheckBox1");
+
+        SexoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         PacienteMenu.setText("Pacientes");
 
@@ -243,12 +244,8 @@ public class CadastrarMedico extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(19, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(38, 38, 38)
-                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -280,41 +277,46 @@ public class CadastrarMedico extends javax.swing.JFrame {
                                             .addGap(18, 18, 18)))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(CrmTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(SexoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(EstadoCivilComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(EstadoCivilComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(SexoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(83, 83, 83))))
                         .addGap(99, 99, 99)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel10)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(DatadeNascimentoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(EspecialidadeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(AtendeConvenioCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel10)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(EspecialidadeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(SalvarButton)
+                        .addGap(49, 49, 49)
+                        .addComponent(jButton1)))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(NomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(AtendeConvenioCheckBox))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(CpfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(NomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11)
+                            .addComponent(AtendeConvenioCheckBox))
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(CpfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(TelefoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -325,7 +327,7 @@ public class CadastrarMedico extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(SexoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(SexoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -335,19 +337,20 @@ public class CadastrarMedico extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(CrmTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
                         .addComponent(DatadeNascimentoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(EspecialidadeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(SalvarButton))
                 .addGap(17, 17, 17))
         );
 
@@ -423,38 +426,127 @@ public class CadastrarMedico extends javax.swing.JFrame {
         }
     }   
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+  private void carregarEspecialidadesComboBox() {
+        EspecialidadesDaos especialidadeDAO = new EspecialidadesDaos(); // Verifique o nome do seu DAO!
+        todasEspecialidadesDisponiveis = especialidadeDAO.buscarTodasEspecialidades(); // Busca objetos Especialidade
 
-    private void EspecialidadeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EspecialidadeComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EspecialidadeComboBoxActionPerformed
+        // Usamos DefaultComboBoxModel para preencher o JComboBox
+        DefaultComboBoxModel<Especialidade> model = new DefaultComboBoxModel<>();
 
-    private void carregarespecialidadesNoComboBox() {
+        // Adiciona um item padrão (recomendado)
+        model.addElement(null); // Adiciona um item nulo que pode ser interpretado como "Selecione"
+                                // Ou crie um objeto Especialidade fake: new Especialidade("", "Selecione")
         
-        // Crie uma instância do seu ConvenioDAO
-        EspecialidadesDaos EspecialidadesDaos = new EspecialidadesDaos();
-
-        // Crie um modelo padrão para o JComboBox
-        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
-
-        // Adicione um item padrão como o primeiro (opcional, mas recomendado)
-        model.addElement("Selecione uma especialidade");
-
-        // Busque a lista de convênios usando seu ConvenioDAO
-        List<String> Especialidades = EspecialidadesDaos.BuscarTodasEspecialidades();
-
-        // Adicione cada convênio à lista do modelo do JComboBox
-        for (String especialidade : Especialidades) {
-            model.addElement(especialidade);
+        // Adiciona as especialidades do banco ao modelo
+        for (Especialidade esp : todasEspecialidadesDisponiveis) {
+            model.addElement(esp); // Adiciona o objeto Especialidade ao modelo do ComboBox
         }
+        
+        // Define o modelo no seu JComboBox
+        EspecialidadeComboBox.setModel(model); // Use o nome da sua variável JComboBox (ex: cmbEspecialidade)
+       
 
-        // Defina o modelo no seu JComboBox (o nome da sua variável JComboBox, ex: cmbConveniosList)
-        EspecialidadeComboBox.setModel(model);
+    }
+    
+    
+    private void carregarEstadoCivilComboBox() {
+        EstadoCivilComboBox.removeAllItems();
+        EstadoCivilComboBox.addItem("Solteiro");
+        EstadoCivilComboBox.addItem("Casado");
+        EstadoCivilComboBox.addItem("Divorciado");
+        EstadoCivilComboBox.setSelectedIndex(0);
+    }
+    
+     private void carregarSexoComboBox() {
+        SexoComboBox.removeAllItems();
+        SexoComboBox.addItem("Masculino");
+        SexoComboBox.addItem("Feminino");
+        SexoComboBox.addItem("Outro");
+        SexoComboBox.setSelectedIndex(0);
+    }
+    
+    
+    private void SalvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarButtonActionPerformed
+    try {
+            // 1. Coletar dados do formulário
+            String nome = NomeTextField.getText().trim();
+            String cpf = CpfTextField.getText().trim();
+            String crm = CrmTextField.getText().trim();
+            String dataNascimento = DatadeNascimentoTextField.getText().trim();
+            String endereco = EnderecoTextField.getText().trim();
+            String observacoes = ObservacoesTextArea.getText().trim();
 
-        // Opcional: Seleciona o primeiro item (o "Selecione um Convênio")
-       EspecialidadeComboBox.setSelectedIndex(0);
+            String estadoCivil = (String) EstadoCivilComboBox.getSelectedItem();
+            String sexo = (String) SexoComboBox.getSelectedItem();
+            String convenio = AtendeConvenioCheckBox.isSelected() ? "S" : "N";
+
+            // 2. Validações básicas (adicione mais conforme necessário)
+            if (nome.isEmpty() || cpf.isEmpty() || crm.isEmpty() || dataNascimento.isEmpty() || endereco.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios (Nome, CPF, CRM, Data Nasc., Endereço).", "Campos Vazios", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (estadoCivil == null || estadoCivil.equals("Selecione")) {
+                 JOptionPane.showMessageDialog(this, "Por favor, selecione o Estado Civil.", "Seleção Inválida", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (sexo == null || sexo.equals("Selecione")) {
+                 JOptionPane.showMessageDialog(this, "Por favor, selecione o Sexo.", "Seleção Inválida", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            // Opcional: Remover caracteres não numéricos de CPF e CRM se for salvar apenas números
+            cpf = cpf.replaceAll("[^0-9]", "");
+            crm = crm.replaceAll("[^0-9]", "");
+            
+            // Validações de tamanho (se a coluna for VARCHAR(11) para CPF, por exemplo)
+            if (cpf.length() != 11) {
+                JOptionPane.showMessageDialog(this, "CPF deve ter 11 dígitos.", "Erro de Validação", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+             if (crm.length() > 9 || crm.isEmpty()) { // CRM tem até 9 dígitos no Brasil
+                JOptionPane.showMessageDialog(this, "CRM inválido. Deve ter até 9 dígitos numéricos.", "Erro de Validação", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+          
+            Especialidade especialidadeSelecionada = (Especialidade) EspecialidadeComboBox.getSelectedItem();
+
+                if (especialidadeSelecionada == null || especialidadeSelecionada.getCbo().isEmpty()) { // Se o placeholder for null ou CBO vazio
+                JOptionPane.showMessageDialog(this, "Por favor, selecione uma especialidade da lista.", "Seleção Inválida", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // 4. Criar o objeto Medico
+            Medico novoMedico = new Medico(
+                nome, cpf, crm, dataNascimento, estadoCivil, sexo,
+                convenio, endereco, observacoes, especialidadeSelecionada
+            );
+
+            // 5. Instanciar e chamar o MedicoDAO para adicionar
+            MedicoDaos medicoDAO = new MedicoDaos();
+            medicoDAO.adicionar(novoMedico);
+
+            // 6. Opcional: Limpar campos após salvar com sucesso
+            limparCampos();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro inesperado ao cadastrar médico: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace(); // Imprime o stack trace no console do NetBeans para depuração
+        }
+    
+    // TODO add your handling code here:
+    }//GEN-LAST:event_SalvarButtonActionPerformed
+
+     private void limparCampos() {
+        NomeTextField.setText("");
+        CpfTextField.setText("");
+        CrmTextField.setText("");
+        DatadeNascimentoTextField.setText("");
+        EnderecoTextField.setText("");
+        ObservacoesTextArea.setText("");
+        EstadoCivilComboBox.setSelectedIndex(0);
+        SexoComboBox.setSelectedIndex(0);
+        AtendeConvenioCheckBox.setSelected(false);
+        EspecialidadeComboBox.setSelectedIndex(0); // Limpa o ComboBox de especialidade.clearSelection(); // Limpa as seleções do JList
     }
     
     /**
@@ -494,7 +586,7 @@ public class CadastrarMedico extends javax.swing.JFrame {
     private javax.swing.JTextField CrmTextField;
     private javax.swing.JTextField DatadeNascimentoTextField;
     private javax.swing.JTextField EnderecoTextField;
-    private javax.swing.JComboBox<String> EspecialidadeComboBox;
+    private javax.swing.JComboBox<Entidades.Especialidade> EspecialidadeComboBox;
     private javax.swing.JMenu EspeciialidadesMenu;
     private javax.swing.JComboBox<String> EstadoCivilComboBox;
     private javax.swing.JMenu ListarEspecialidadesMenu;
@@ -505,14 +597,14 @@ public class CadastrarMedico extends javax.swing.JFrame {
     private javax.swing.JMenu PacienteMenu;
     private javax.swing.JMenu PacientesCadastradosMenu;
     private javax.swing.JMenu SairMenu;
-    private javax.swing.JTextField SexoTextField;
+    private javax.swing.JButton SalvarButton;
+    private javax.swing.JComboBox<String> SexoComboBox;
     private javax.swing.JTextField TelefoneTextField;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

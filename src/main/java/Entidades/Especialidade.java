@@ -1,49 +1,36 @@
+// src/model/Especialidade.java
 package Entidades;
 
 public class Especialidade {
-  private String Dataadd;
-  private String Nome;
-  private char covennio;
-  private Medico medico;
-  private String CBO;
+    private String cbo; // Atributo para o CBO
+    private String nomeEspecialidade;
 
-    public String getDataadd() {
-        return Dataadd;
+    // Construtor
+    public Especialidade(String cbo, String nomeEspecialidade) {
+        this.cbo = cbo;
+        this.nomeEspecialidade = nomeEspecialidade;
     }
 
-    public void setDataadd(String dataadd) {
-        this.Dataadd = dataadd;
+    // --- GETTER E SETTER PARA CBO (VERIFIQUE ESTES NOMES) ---
+    public String getCbo() { // Este método é crucial!
+        return cbo;
     }
 
-    public String getNome() {
-        return Nome;
+    public void setCbo(String cbo) {
+        this.cbo = cbo;
+    }
+    // --------------------------------------------------------
+
+    public String getNomeEspecialidade() {
+        return nomeEspecialidade;
     }
 
-    public void setNome(String nome) {
-        this.Nome = nome;
+    public void setNomeEspecialidade(String nomeEspecialidade) {
+        this.nomeEspecialidade = nomeEspecialidade;
     }
 
-    public char getCovennio() {
-        return covennio;
-    }
-
-    public void setCovennio(char covennio) {
-        this.covennio = covennio;
-    }
-
-    public Medico getMedico() {
-        return medico;
-    }
-
-    public void setMedico(Medico medico) {
-        this.medico = medico;
-    }
-
-    public String getCBO() {
-        return CBO;
-    }
-
-    public void setCBO(String CBO) {
-        this.CBO = CBO;
+    @Override
+    public String toString() {
+        return nomeEspecialidade + " (" + cbo + ")";
     }
 }

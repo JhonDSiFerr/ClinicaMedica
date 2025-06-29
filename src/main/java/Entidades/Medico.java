@@ -1,88 +1,64 @@
+// src/model/Medico.java
 package Entidades;
 
+// import java.util.List; // REMOVA ESTE IMPORT
+
 public class Medico {
-    private String Nome;
-    private String Cpf;
-    private String Endereco;
-    private String Telefone;
-    private String Crm;
-    private String EstadoCivil;
-    private String DataNascimento;
-    private Especialidade especialidade;
-    private String Observacoes ;
+    private String nome;
+    private String cpf;
+    private String crm;
+    private String dataNascimento;
+    private String estadoCivil;
+    private String sexo;
+    private String convenio; // 'S' ou 'N'
+    private String endereco;
+    private String observacoes;
+    // Removido: private List<Especialidade> especialidades;
+    private Especialidade especialidade; // NOVO: Apenas uma especialidade (objeto)
 
-    public String getNome() {
-        return Nome;
+    // Construtor principal (agora recebe um objeto Especialidade única)
+    public Medico(String nome, String cpf, String crm, String dataNascimento,
+                  String estadoCivil, String sexo, String convenio,
+                  String endereco, String observacoes, Especialidade especialidade) { // Tipo alterado aqui
+        this.nome = nome;
+        this.cpf = cpf;
+        this.crm = crm;
+        this.dataNascimento = dataNascimento;
+        this.estadoCivil = estadoCivil;
+        this.sexo = sexo;
+        this.convenio = convenio;
+        this.endereco = endereco;
+        this.observacoes = observacoes;
+        this.especialidade = especialidade; // Atribuição da única especialidade
     }
 
-    public void setNome(String nome) {
-        Nome = nome;
-    }
+     public String getCrm() { return crm; }
+    public void setCrm(String crm) { this.crm = crm; } // O CRM será o identificador
+    
+    public String getEspecialidade() { return crm; }
+    public void setEspecialidade(Especialidade Especialidade) { this.especialidade = Especialidade; }
+    
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-    public String getCpf() {
-        return Cpf;
-    }
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
 
-    public void setCpf(String cpf) {
-        Cpf = cpf;
-    }
+    public String getDataNascimento() { return dataNascimento; }
+    public void setDataNascimento(String dataNascimento) { this.dataNascimento = dataNascimento; }
 
-    public String getEndereco() {
-        return Endereco;
-    }
+    public String getEstadoCivil() { return estadoCivil; }
+    public void setEstadoCivil(String estadoCivil) { this.estadoCivil = estadoCivil; }
 
-    public void setEndereco(String endereco) {
-        Endereco = endereco;
-    }
+    public String getSexo() { return sexo; }
+    public void setSexo(String sexo) { this.sexo = sexo; }
 
-    public String getTelefone() {
-        return Telefone;
-    }
+    public String getConvenio() { return convenio; }
+    public void setConvenio(String convenio) { this.convenio = convenio; }
 
-    public void setTelefone(String telefone) {
-        Telefone = telefone;
-    }
+    public String getEndereco() { return endereco; }
+    public void setEndereco(String endereco) { this.endereco = endereco; }
 
-    public String getCrm() {
-        return Crm;
-    }
-
-    public void setCrm(String crm) {
-        Crm = crm;
-    }
-
-    public String getEstadoCivil() {
-        return EstadoCivil;
-    }
-
-    public void setEstadoCivil(String estadoCivil) {
-        EstadoCivil = estadoCivil;
-    }
-
-    public String getDataNascimento() {
-        return DataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        DataNascimento = dataNascimento;
-    }
-
-    public Especialidade getEspecialidade() {
-        return especialidade;
-    }
-
-    public void setEspecialidade(Especialidade especialidade) {
-        this.especialidade = especialidade;
-    }
-
-    public String getObservacoes() {
-        return Observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        Observacoes = observacoes;
-    }
-
-    }
-
-
+    public String getObservacoes() { return observacoes; }
+    public void setObservacoes(String observacoes) { this.observacoes = observacoes; }
+}

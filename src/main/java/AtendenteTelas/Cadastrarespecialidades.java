@@ -4,7 +4,7 @@
  */
 package AtendenteTelas;
 import Daos.EspecialidadesDaos; 
-import java.util.List;
+import java.util.List; 
 import Login.LoginTela;
 
 

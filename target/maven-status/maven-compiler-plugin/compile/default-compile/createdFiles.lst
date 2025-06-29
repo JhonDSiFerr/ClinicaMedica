@@ -11,6 +11,7 @@ AtendenteTelas\Agenda$1.class
 AtendenteTelas\CadastrarPaciente$1.class
 AtendenteTelas\EditarMedico$1.class
 AtendenteTelas\MedicosCadastradosAtendente.class
+Daos\MedicoDaos.class
 Login\LoginTela$1.class
 Login\LoginTela$2.class
 AtendenteTelas\Cadastrarespecialidades$2.class
