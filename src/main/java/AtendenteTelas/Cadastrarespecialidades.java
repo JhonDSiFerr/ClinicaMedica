@@ -254,6 +254,12 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
+   
+
+    
      private void PacientesCadastradosMenuMouseClicked(java.awt.event.MouseEvent evt) {
       PacientesCadastradosAtendente PacientesCadastrados = new PacientesCadastradosAtendente ();
     PacientesCadastrados.setVisible(true); // Torna a tela visível
@@ -342,7 +348,7 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
     // 2. Coletar dados da tela
     especialidade.setNome(EspelialidadesTextField.getText()); // Substitua pelo nome do seu JTextField
     especialidade.setAtendeConvenio(AtendeConvenioCheckbox.isSelected()); // Substitua pelo nome do seu JCheckBox
-    
+     especialidade.setCbo(CBOTextField.getText()); // Substitua pelo nome do seu JCheckBox
     // --- MUDANÇA PRINCIPAL AQUI ---
     // Pega a data do campo de texto que o usuário digitou
     String dataTexto = DataAddMenu.getText(); // Substitua 'campoDataAdicao' pelo nome do seu JTextField
@@ -373,6 +379,7 @@ public class Cadastrarespecialidades extends javax.swing.JFrame {
             }
     
     private void limparCamposEspecialidade() {
+    CBOTextField.setText("");
     EspelialidadesTextField.setText("");
     AtendeConvenioCheckbox.setSelected(false);
     DataAddMenu.setText("");

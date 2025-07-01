@@ -36,6 +36,7 @@ AtendenteTelas\AgendarCosulta.class
 AtendenteTelas\PacientesCadastradosAtendente$9.class
 AtendenteTelas\Editarespecialidades$9.class
 AtendenteTelas\CadastrarPaciente$10.class
+Entidades\Paciente.class
 AtendenteTelas\Agenda$3.class
 AtendenteTelas\AgendarCosulta$13.class
 AtendenteTelas\CadastrarMedico$4.class

@@ -4,7 +4,12 @@
  */
 package AtendenteTelas;
 
+import Daos.PacienteDAO;
+import Entidades.Paciente;
 import Login.LoginTela;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,7 +24,13 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
      */
     public PacientesCadastradosAtendente() {
         initComponents();
-
+        
+        
+         preencherTabela();
+         
+         
+         
+         
             PacientesCadastradosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     PacientesCadastradosMenuMouseClicked(evt);
@@ -259,7 +270,25 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
     private void EditarPacientesCadastradosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarPacientesCadastradosButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EditarPacientesCadastradosButtonActionPerformed
+private void preencherTabela() {
+        DefaultTableModel modelo = (DefaultTableModel) PacientesTable.getModel();
+        modelo.setRowCount(0); // Limpa a tabela
 
+        PacienteDAO pdao = new PacienteDAO();
+        List<Paciente> listaPacientes = pdao.findAll();
+        
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        for (Paciente p : listaPacientes) {
+            // Adiciona uma nova linha para cada paciente da lista
+            modelo.addRow(new Object[]{
+                p.getNome(),
+                p.getCpf(),
+                p.getTelefone(),
+                p.getDataNascimento().format(formatador)
+            });
+        }
+    }
     /**
      * @param args the command line arguments
      */

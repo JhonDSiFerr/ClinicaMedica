@@ -4,7 +4,12 @@
  */
 package AtendenteTelas;
 
+import Daos.EspecialidadeDAO;
+import Entidades.Especialidade;
 import Login.LoginTela;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +25,11 @@ public class EspecialidadeCadastradas extends javax.swing.JFrame {
     public EspecialidadeCadastradas() {
         initComponents();
 
+        
+        preencherTabelaEspecialidades();
+        
+        
+        
             PacientesCaastradosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     PacientesCadastradosMenuMouseClicked(evt);
@@ -83,7 +93,7 @@ public class EspecialidadeCadastradas extends javax.swing.JFrame {
         jPopupMenu3 = new javax.swing.JPopupMenu();
         jPopupMenu4 = new javax.swing.JPopupMenu();
         jScrollPane2 = new javax.swing.JScrollPane();
-        EspecilidadesTable = new javax.swing.JTable();
+        EspecialidadesTable = new javax.swing.JTable();
         EditarEspecialidadeButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         PacientesMenu = new javax.swing.JMenu();
@@ -101,7 +111,7 @@ public class EspecialidadeCadastradas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        EspecilidadesTable.setModel(new javax.swing.table.DefaultTableModel(
+        EspecialidadesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -120,7 +130,7 @@ public class EspecialidadeCadastradas extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(EspecilidadesTable);
+        jScrollPane2.setViewportView(EspecialidadesTable);
 
         EditarEspecialidadeButton.setText("Editar especialidade");
 
@@ -187,6 +197,36 @@ public class EspecialidadeCadastradas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     private void preencherTabelaEspecialidades() {
+        // Pega o modelo da JTable. Substitua 'jTableEspecialidades' pelo nome da sua tabela.
+        DefaultTableModel modelo = (DefaultTableModel) EspecialidadesTable.getModel();
+        modelo.setRowCount(0); // Limpa a tabela para não duplicar dados ao recarregar
+
+        EspecialidadeDAO edao = new EspecialidadeDAO();
+        List<Especialidade> listaEspecialidades = edao.findAll();
+        
+        DateTimeFormatter formatadorData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        // Itera sobre a lista de especialidades retornada pelo DAO
+        for (Especialidade e : listaEspecialidades) {
+            
+            // Lógica para converter o valor booleano em um texto "Sim" ou "Não"
+            String atendeConvenioTexto = e.isAtendeConvenio() ? "Sim" : "Não";
+            
+            // Adiciona uma nova linha na tabela com os dados formatados
+            modelo.addRow(new Object[]{
+                e.getCbo(),
+                e.getNome(),
+                atendeConvenioTexto, // Usa o texto formatado
+                e.getDataAdicao().format(formatadorData) // Usa a data formatada
+            });
+        }
+    }
+    
+    
+    
+    
+    
      private void PacientesCadastradosMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                      
       PacientesCadastradosAtendente PacientesCadastrados = new PacientesCadastradosAtendente ();
     PacientesCadastrados.setVisible(true); // Torna a tela visível
@@ -250,6 +290,7 @@ public class EspecialidadeCadastradas extends javax.swing.JFrame {
             LoginTela.setVisible(true); // Torna a tela visível
             this.dispose();
         }
+        
     }   
     
     /**
@@ -285,7 +326,7 @@ public class EspecialidadeCadastradas extends javax.swing.JFrame {
     private javax.swing.JMenu CadastrarPacienteMenu;
     private javax.swing.JButton EditarEspecialidadeButton;
     private javax.swing.JMenu EspecialidadesMenu;
-    private javax.swing.JTable EspecilidadesTable;
+    private javax.swing.JTable EspecialidadesTable;
     private javax.swing.JMenu ListarEspecialidadesMenu;
     private javax.swing.JMenu MedicosCadastradosMenu;
     private javax.swing.JMenu MedicosMenu;

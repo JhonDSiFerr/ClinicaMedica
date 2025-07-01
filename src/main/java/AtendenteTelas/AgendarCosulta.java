@@ -108,7 +108,7 @@ public class AgendarCosulta extends javax.swing.JFrame {
         DataLabel = new javax.swing.JLabel();
         TextFieldData = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        ComboBoxEspecialidade = new javax.swing.JComboBox<>();
+        EspecialidadeComboBox = new javax.swing.JComboBox<>();
         EspecialidadeLabel = new javax.swing.JLabel();
         MedicoComboBox = new javax.swing.JComboBox<>();
         ConvenioLabel = new javax.swing.JLabel();
@@ -146,7 +146,7 @@ public class AgendarCosulta extends javax.swing.JFrame {
 
         jLabel2.setText("Medico");
 
-        ComboBoxEspecialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        EspecialidadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         EspecialidadeLabel.setText("Especialidade:");
 
@@ -262,7 +262,7 @@ public class AgendarCosulta extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(EspecialidadeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(ComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(EspecialidadeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(74, 74, 74)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,7 +291,7 @@ public class AgendarCosulta extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EspecialidadeLabel)
-                    .addComponent(ComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EspecialidadeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RetornoCheckBox))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -392,7 +392,7 @@ Agendamento agendamento = new Agendamento();
         agendamento.setPaciente(ComboBoxPaciente.getSelectedItem().toString()); // Substitua pelo nome do seu componente
         agendamento.setConvenio(ConveniosComboBox.getSelectedItem().toString());
         agendamento.setMedico(MedicoComboBox.getSelectedItem().toString());
-        agendamento.setEspecialidade(ComboBoxEspecialidade.getSelectedItem().toString());
+        agendamento.setEspecialidade(EspecialidadeComboBox.getSelectedItem().toString());
 
         // Tratamento para data e hora com validação
         try {
@@ -419,15 +419,24 @@ Agendamento agendamento = new Agendamento();
     }//GEN-LAST:event_MedicoComboBoxActionPerformed
    
     private void carregarEspecialidades() {
-        EspecialidadeDAO dao = new EspecialidadeDAO();
-        List<String> lista = dao.findAll();
-        
-        ComboBoxEspecialidade.removeAllItems(); // Substitua pelo nome do seu componente
-        ComboBoxEspecialidade.addItem("Selecione...");
-        for (String esp : lista) {
-            ComboBoxEspecialidade.addItem(esp);
-        }
+    // 1. Instancia o DAO
+    EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
+    
+    // 2. Chama o NOVO método que retorna apenas os nomes
+    List<String> listaDeEspecialidades = especialidadeDAO.findAllNames(); // <<< MUDANÇA PRINCIPAL AQUI
+    
+    // 3. Limpa a ComboBox
+    EspecialidadeComboBox.removeAllItems();
+    
+    // 4. Adiciona o item padrão
+    EspecialidadeComboBox.addItem("Selecione uma especialidade...");
+    
+    // 5. Adiciona cada especialidade da lista na ComboBox
+    for (String especialidade : listaDeEspecialidades) {
+        EspecialidadeComboBox.addItem(especialidade);
     }
+}
+    
      private void carregarMedicos() {
         MedicoDAO dao = new MedicoDAO();
         List<String> lista = dao.findAllNames();
@@ -445,7 +454,7 @@ Agendamento agendamento = new Agendamento();
         HoraTextField.setText("");
         MedicoComboBox.setSelectedIndex(0);
        ConveniosComboBox.setSelectedIndex(0);
-         ComboBoxEspecialidade.setSelectedIndex(0);
+         EspecialidadeComboBox.setSelectedIndex(0);
           ComboBoxPaciente.setSelectedIndex(0);
     }
     
@@ -493,11 +502,11 @@ Agendamento agendamento = new Agendamento();
     private javax.swing.JMenu CadastrarMedicoMenu;
     private javax.swing.JMenu CadastrarPacienteMenu;
     private javax.swing.JButton CancelarButton;
-    private javax.swing.JComboBox<String> ComboBoxEspecialidade;
     private javax.swing.JComboBox<String> ComboBoxPaciente;
     private javax.swing.JLabel ConvenioLabel;
     private javax.swing.JComboBox<String> ConveniosComboBox;
     private javax.swing.JLabel DataLabel;
+    private javax.swing.JComboBox<String> EspecialidadeComboBox;
     private javax.swing.JLabel EspecialidadeLabel;
     private javax.swing.JMenu EspecialidadesMenu;
     private javax.swing.JTextField HoraTextField;

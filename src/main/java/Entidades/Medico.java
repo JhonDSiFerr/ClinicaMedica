@@ -18,7 +18,7 @@ public class Medico {
     private LocalDate dataNascimento;
     private String especialidade;
     private String observacoes;
-
+    private String crm;
     // Getters e Setters para todos os atributos
     
     public String getCpf() {
@@ -96,8 +96,15 @@ public class Medico {
     public String getObservacoes() {
         return observacoes;
     }
-
+    
     public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
     }
+    public String getCrm() { // <<< GETTER PARA O CRM
+        return crm;
+    }
+    public void setCrm(String crm) { // <<< SETTER PARA O CRM
+        this.crm = crm;
+    }
+    
 }

@@ -4,7 +4,12 @@
  */
 package AtendenteTelas;
 
+import Daos.MedicoDAO;
+import Entidades.Medico;
 import Login.LoginTela;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +25,10 @@ public class MedicosCadastradosAtendente extends javax.swing.JFrame {
     public MedicosCadastradosAtendente() {
         initComponents();
 
+        preencherTabelaMedicos();
+        
+        
+        
             PacientesCadastradosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     PacientesCadastradosMenuMouseClicked(evt);
@@ -103,17 +112,17 @@ public class MedicosCadastradosAtendente extends javax.swing.JFrame {
 
         MedicosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Cpf", "Telefone", "Data", "Crm", "Especialidade"
+                "Nome", "Cpf", "Telefone", "Data", "Crm", "Especialidade", "Convenio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -177,7 +186,7 @@ public class MedicosCadastradosAtendente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(EditarMedicosCadastradosButton)))
@@ -263,7 +272,38 @@ public class MedicosCadastradosAtendente extends javax.swing.JFrame {
     private void EditarMedicosCadastradosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarMedicosCadastradosButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EditarMedicosCadastradosButtonActionPerformed
+private void preencherTabelaMedicos() {
+        // Pega o modelo da JTable. Substitua 'jTableMedicos' pelo nome da sua tabela.
+        DefaultTableModel modelo = (DefaultTableModel) MedicosTable.getModel();
+        modelo.setRowCount(0); // Limpa a tabela para não duplicar dados
 
+        MedicoDAO mdao = new MedicoDAO();
+        List<Medico> listaMedicos = mdao.findAll();
+        
+        DateTimeFormatter formatadorData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        // Itera sobre a lista de médicos retornada pelo DAO
+        for (Medico m : listaMedicos) {
+            
+            // --- LÓGICA PARA CONVERTER BOOLEAN EM TEXTO ---
+            String atendeConvenioTexto = m.isAtendeConvenio() ? "Sim" : "Não";
+            
+            // Adiciona uma nova linha na tabela com os dados formatados
+            modelo.addRow(new Object[]{
+                m.getNome(),
+                m.getCpf(),
+                m.getTelefone(),
+                m.getDataNascimento().format(formatadorData),
+                m.getCrm(),
+                m.getEspecialidade(),
+                atendeConvenioTexto // Usa o texto "Sim" ou "Não"
+            });
+        }
+    }
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */

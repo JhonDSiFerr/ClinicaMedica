@@ -423,7 +423,7 @@ public class CadastrarMedico extends javax.swing.JFrame {
     medico.setNome(NomeTextField.getText()); // Substitua 'campoNome' pelo nome do seu JTextField
     medico.setTelefone(TelefoneTextField.getText());
     medico.setEndereco(EnderecoTextField.getText());
-    
+    medico.setCrm(CrmTextField.getText());
     // Para ComboBoxes, pegue o item selecionado como String
     medico.setSexo(SexoComboBox.getSelectedItem().toString()); // Substitua 'comboBoxSexo' pelo nome do seu JComboBox
     medico.setEstadoCivil(EstadoCivilComboBox.getSelectedItem().toString());
@@ -463,7 +463,7 @@ public class CadastrarMedico extends javax.swing.JFrame {
     EnderecoTextField.setText("");
     DatadeNascimentoTextField.setText("");
     ObservacoesTextArea.setText("");
-    
+     CrmTextField.setText("");
     // Reseta os ComboBoxes para o primeiro item ("Selecione...")
     SexoComboBox.setSelectedIndex(0);
     EstadoCivilComboBox.setSelectedIndex(0);
@@ -477,24 +477,24 @@ public class CadastrarMedico extends javax.swing.JFrame {
 }
     
     
-    private void carregarEspecialidades() {
-        // 1. Instancia o DAO
-        EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
-        
-        // 2. Chama o método para buscar todas as especialidades
-        List<String> listaDeEspecialidades = especialidadeDAO.findAll();
-        
-        // 3. Limpa a ComboBox antes de adicionar novos itens
-        EspecialidadeComboBox.removeAllItems(); // Substitua 'comboboxespecialidade' pelo nome do seu componente
-        
-        // 4. Adiciona um item padrão de seleção
-        EspecialidadeComboBox.addItem("Selecione uma especialidade...");
-        
-        // 5. Adiciona cada especialidade da lista na ComboBox
-        for (String especialidade : listaDeEspecialidades) {
-            EspecialidadeComboBox.addItem(especialidade);
-        }
+   private void carregarEspecialidades() {
+    // 1. Instancia o DAO
+    EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
+    
+    // 2. Chama o NOVO método que retorna apenas os nomes
+    List<String> listaDeEspecialidades = especialidadeDAO.findAllNames(); // <<< MUDANÇA PRINCIPAL AQUI
+    
+    // 3. Limpa a ComboBox
+    EspecialidadeComboBox.removeAllItems();
+    
+    // 4. Adiciona o item padrão
+    EspecialidadeComboBox.addItem("Selecione uma especialidade...");
+    
+    // 5. Adiciona cada especialidade da lista na ComboBox
+    for (String especialidade : listaDeEspecialidades) {
+        EspecialidadeComboBox.addItem(especialidade);
     }
+}
     
     
     

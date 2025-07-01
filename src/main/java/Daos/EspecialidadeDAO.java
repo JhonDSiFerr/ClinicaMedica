@@ -23,7 +23,7 @@ public class EspecialidadeDAO {
      */
     public void save(Especialidade especialidade) {
         // Comando SQL para a inserção
-        String sql = "INSERT INTO especialidade (nome, atende_convenio, data_adicao) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO especialidade (nome, atende_convenio, data_adicao, cbo) VALUES (?, ?, ?, ?)";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -39,7 +39,7 @@ public class EspecialidadeDAO {
             pstmt.setString(1, especialidade.getNome());
             pstmt.setBoolean(2, especialidade.isAtendeConvenio());
             pstmt.setDate(3, Date.valueOf(especialidade.getDataAdicao())); // Converte LocalDate para java.sql.Date
-
+            pstmt.setString(4, especialidade.getCbo());
             // Executa a inserção no banco
             pstmt.executeUpdate();
 
@@ -65,34 +65,37 @@ public class EspecialidadeDAO {
      * Busca e retorna o nome de todas as especialidades do banco de dados.
      * @return Uma lista de Strings com o nome de cada especialidade.
      */
-    public List<String> findAll() {
-        // Comando SQL para selecionar apenas a coluna 'nome'
-        String sql = "SELECT nome FROM especialidade ORDER BY nome ASC";
-
+    public List<Especialidade> findAll() {
+        // SQL para selecionar todas as colunas necessárias
+        String sql = "SELECT cbo, nome, atende_convenio, data_adicao FROM especialidade ORDER BY nome ASC";
+        
         Connection conn = null;
         PreparedStatement pstmt = null;
-        ResultSet rs = null; // Objeto para guardar o resultado da consulta
-
-        // Lista que irá armazenar os nomes das especialidades
-        List<String> especialidades = new ArrayList<>();
+        ResultSet rs = null;
+        List<Especialidade> especialidades = new ArrayList<>();
 
         try {
             conn = ConnectDatabase.getConnection();
             pstmt = conn.prepareStatement(sql);
-            
-            // O executeQuery() é usado para comandos SELECT
             rs = pstmt.executeQuery();
 
-            // Itera sobre o resultado da consulta
             while (rs.next()) {
-                // Adiciona o nome da especialidade (da coluna 'nome') à lista
-                especialidades.add(rs.getString("nome"));
-            }
+                // Cria um objeto Especialidade para cada linha do resultado
+                Especialidade especialidade = new Especialidade();
 
+                // Preenche o objeto com TODOS os dados do banco
+                especialidade.setCbo(rs.getString("cbo"));
+                especialidade.setNome(rs.getString("nome"));
+                especialidade.setAtendeConvenio(rs.getBoolean("atende_convenio"));
+                especialidade.setDataAdicao(rs.getDate("data_adicao").toLocalDate());
+
+                // Adiciona o objeto completo à lista
+                especialidades.add(especialidade);
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao buscar especialidades: " + e.getMessage());
         } finally {
-            // Fecha todas as conexões (ResultSet, PreparedStatement e Connection)
+            // Bloco para fechar as conexões
             try {
                 if (rs != null) rs.close();
                 if (pstmt != null) pstmt.close();
@@ -101,7 +104,38 @@ public class EspecialidadeDAO {
                 System.err.println("Erro ao fechar conexão: " + e.getMessage());
             }
         }
+        // O método agora retorna corretamente uma lista de objetos Especialidade
+        return especialidades;
+    }
+ public List<String> findAllNames() {
+        String sql = "SELECT nome FROM especialidade ORDER BY nome ASC";
+        
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<String> nomesEspecialidades = new ArrayList<>();
 
-        return especialidades; // Retorna a lista preenchida
+        try {
+            conn = ConnectDatabase.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                // Adiciona apenas o nome (String) à lista
+                nomesEspecialidades.add(rs.getString("nome"));
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar nomes de especialidades: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                System.err.println("Erro ao fechar conexão: " + e.getMessage());
+            }
+        }
+        return nomesEspecialidades;
     }
 }
+    

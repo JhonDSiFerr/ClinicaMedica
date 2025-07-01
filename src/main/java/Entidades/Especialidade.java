@@ -11,7 +11,7 @@ public class Especialidade {
     private String nome;
     private boolean atendeConvenio;
     private LocalDate dataAdicao;
-
+    private String Cbo;
     // Getters e Setters
     
     public String getNome() {
@@ -36,5 +36,12 @@ public class Especialidade {
 
     public void setDataAdicao(LocalDate dataAdicao) {
         this.dataAdicao = dataAdicao;
+    }
+     public String getCbo() {
+        return Cbo;
+    }
+
+    public void setCbo(String Cbo) {
+        this.Cbo = Cbo;
     }
 }
