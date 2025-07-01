@@ -50,11 +50,6 @@
             <Property name="text" type="java.lang.String" value="Agendar Consultas"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="AgendarRetorno">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Agendar retorno"/>
-          </Properties>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="MedicosMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="M&#xe9;dicos"/>

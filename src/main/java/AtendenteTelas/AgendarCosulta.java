@@ -4,8 +4,19 @@
  */
 package AtendenteTelas;
 
+import Daos.AgendamentoDAO;
+import Daos.EspecialidadeDAO;
+import Daos.MedicoDAO;
+import Entidades.Agendamento;
 import Login.LoginTela;
-
+import Utils.ComboBoxManager;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.List;
+import javax.swing.JOptionPane;
+import Daos.PacienteDAO;
 /**
  *
  * @author Alisson Dias
@@ -19,7 +30,18 @@ public class AgendarCosulta extends javax.swing.JFrame {
      */
     public AgendarCosulta() {
         initComponents();
-
+        
+        
+        
+        ComboBoxManager.preencherComboBoxConvenio(ConveniosComboBox);
+         carregarEspecialidades();
+         carregarMedicos();
+         carregarPacientes();
+        
+        
+        
+        
+        
             // Adicionando listeners de mouse aos menus
             PacientesCadastradosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -36,11 +58,7 @@ public class AgendarCosulta extends javax.swing.JFrame {
                     AgendarConsultasMenuMouseClicked(evt);
                 }
             });
-            AgendarretornoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    AgendarRetornoMenuMouseClicked(evt);
-                }
-            });
+          
             CadastrarMedicoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     CadastrarMedicoMenuMouseClicked(evt);
@@ -94,17 +112,19 @@ public class AgendarCosulta extends javax.swing.JFrame {
         EspecialidadeLabel = new javax.swing.JLabel();
         MedicoComboBox = new javax.swing.JComboBox<>();
         ConvenioLabel = new javax.swing.JLabel();
-        ConvenioComboBox = new javax.swing.JComboBox<>();
+        ConveniosComboBox = new javax.swing.JComboBox<>();
         PacienteLabel = new javax.swing.JLabel();
         ComboBoxPaciente = new javax.swing.JComboBox<>();
         AgendarButton = new javax.swing.JButton();
         CancelarButton = new javax.swing.JButton();
+        RetornoCheckBox = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        HoraTextField = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         PacientesMenu = new javax.swing.JMenu();
         PacientesCadastradosMenu = new javax.swing.JMenu();
         CadastrarPacienteMenu = new javax.swing.JMenu();
         AgendarConsulta = new javax.swing.JMenu();
-        AgendarretornoMenu = new javax.swing.JMenu();
         MedicosMenu = new javax.swing.JMenu();
         CadastrarMedicoMenu = new javax.swing.JMenu();
         MedicosCadastrados = new javax.swing.JMenu();
@@ -131,10 +151,15 @@ public class AgendarCosulta extends javax.swing.JFrame {
         EspecialidadeLabel.setText("Especialidade:");
 
         MedicoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        MedicoComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MedicoComboBoxActionPerformed(evt);
+            }
+        });
 
         ConvenioLabel.setText("Cônvenio");
 
-        ConvenioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ConveniosComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         PacienteLabel.setText("Paciente:");
 
@@ -146,8 +171,17 @@ public class AgendarCosulta extends javax.swing.JFrame {
         });
 
         AgendarButton.setText("Agendar");
+        AgendarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgendarButtonActionPerformed(evt);
+            }
+        });
 
         CancelarButton.setText("Cancelar");
+
+        RetornoCheckBox.setText("Retorno");
+
+        jLabel1.setText("Hora");
 
         PacientesMenu.setText("Pacientes");
 
@@ -161,9 +195,6 @@ public class AgendarCosulta extends javax.swing.JFrame {
 
         AgendarConsulta.setText("Agendar Consultas");
         jMenuBar1.add(AgendarConsulta);
-
-        AgendarretornoMenu.setText("Agendar retorno");
-        jMenuBar1.add(AgendarretornoMenu);
 
         MedicosMenu.setText("Médicos");
 
@@ -197,40 +228,48 @@ public class AgendarCosulta extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ConvenioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ConvenioComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DataLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addComponent(MedicoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(TextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(EspecialidadeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PacienteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ComboBoxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AgendarButton)
                 .addGap(37, 37, 37)
                 .addComponent(CancelarButton)
                 .addGap(46, 46, 46))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(HoraTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ConvenioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(ConveniosComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(DataLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(55, 55, 55)
+                                        .addComponent(MedicoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(TextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(EspecialidadeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(ComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PacienteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComboBoxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RetornoCheckBox))
+                        .addGap(17, 17, 17))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,12 +291,17 @@ public class AgendarCosulta extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EspecialidadeLabel)
-                    .addComponent(ComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RetornoCheckBox))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ConvenioLabel)
-                    .addComponent(ConvenioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                    .addComponent(ConveniosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(HoraTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AgendarButton)
                     .addComponent(CancelarButton))
@@ -288,12 +332,6 @@ public class AgendarCosulta extends javax.swing.JFrame {
     AgendarCosulta.setVisible(true); // Torna a tela visível
     this.dispose();
     }                                                 
-
-    private void AgendarRetornoMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                
-     Agendarretorno Agendarretorno = new Agendarretorno();
-    Agendarretorno.setVisible(true); // Torna a tela visível
-    this.dispose();
-    }                                               
 
     private void CadastrarMedicoMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                 
        CadastrarMedico  CadastrarMedico = new  CadastrarMedico();
@@ -347,6 +385,81 @@ public class AgendarCosulta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxPacienteActionPerformed
 
+    private void AgendarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendarButtonActionPerformed
+Agendamento agendamento = new Agendamento();
+        
+        // Pega os dados dos campos de texto e ComboBoxes
+        agendamento.setPaciente(ComboBoxPaciente.getSelectedItem().toString()); // Substitua pelo nome do seu componente
+        agendamento.setConvenio(ConveniosComboBox.getSelectedItem().toString());
+        agendamento.setMedico(MedicoComboBox.getSelectedItem().toString());
+        agendamento.setEspecialidade(ComboBoxEspecialidade.getSelectedItem().toString());
+
+        // Tratamento para data e hora com validação
+        try {
+            DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            agendamento.setData(LocalDate.parse(TextFieldData.getText(), formatoData));
+
+            DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm");
+            agendamento.setHora(LocalTime.parse(HoraTextField.getText(), formatoHora));
+
+            // Se data e hora são válidas, prossegue para salvar
+            AgendamentoDAO dao = new AgendamentoDAO();
+            dao.save(agendamento);
+            
+            limparCampos();
+
+        } catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(null, "Formato de data ou hora inválido. Use DD/MM/AAAA e HH:MM.");
+        }
+            // TODO add your handling code here:
+    }//GEN-LAST:event_AgendarButtonActionPerformed
+
+    private void MedicoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicoComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MedicoComboBoxActionPerformed
+   
+    private void carregarEspecialidades() {
+        EspecialidadeDAO dao = new EspecialidadeDAO();
+        List<String> lista = dao.findAll();
+        
+        ComboBoxEspecialidade.removeAllItems(); // Substitua pelo nome do seu componente
+        ComboBoxEspecialidade.addItem("Selecione...");
+        for (String esp : lista) {
+            ComboBoxEspecialidade.addItem(esp);
+        }
+    }
+     private void carregarMedicos() {
+        MedicoDAO dao = new MedicoDAO();
+        List<String> lista = dao.findAllNames();
+        
+        MedicoComboBox.removeAllItems(); // Substitua pelo nome do seu componente
+        MedicoComboBox.addItem("Selecione...");
+        for (String med : lista) {
+            MedicoComboBox.addItem(med);
+        }
+    }
+    
+     private void limparCampos() {
+        
+        TextFieldData.setText("");
+        HoraTextField.setText("");
+        MedicoComboBox.setSelectedIndex(0);
+       ConveniosComboBox.setSelectedIndex(0);
+         ComboBoxEspecialidade.setSelectedIndex(0);
+          ComboBoxPaciente.setSelectedIndex(0);
+    }
+    
+     private void carregarPacientes() {
+        PacienteDAO dao = new PacienteDAO();
+        List<String> lista = dao.findAllNames();
+        
+        ComboBoxPaciente.removeAllItems(); // Substitua pelo nome da sua JComboBox de paciente
+        ComboBoxPaciente.addItem("Selecione...");
+        for (String paciente : lista) {
+            ComboBoxPaciente.addItem(paciente);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -376,18 +489,18 @@ public class AgendarCosulta extends javax.swing.JFrame {
     private javax.swing.JMenu AgendaMenu;
     private javax.swing.JButton AgendarButton;
     private javax.swing.JMenu AgendarConsulta;
-    private javax.swing.JMenu AgendarretornoMenu;
     private javax.swing.JMenu CadastrarEspecialidadesMenu;
     private javax.swing.JMenu CadastrarMedicoMenu;
     private javax.swing.JMenu CadastrarPacienteMenu;
     private javax.swing.JButton CancelarButton;
     private javax.swing.JComboBox<String> ComboBoxEspecialidade;
     private javax.swing.JComboBox<String> ComboBoxPaciente;
-    private javax.swing.JComboBox<String> ConvenioComboBox;
     private javax.swing.JLabel ConvenioLabel;
+    private javax.swing.JComboBox<String> ConveniosComboBox;
     private javax.swing.JLabel DataLabel;
     private javax.swing.JLabel EspecialidadeLabel;
     private javax.swing.JMenu EspecialidadesMenu;
+    private javax.swing.JTextField HoraTextField;
     private javax.swing.JMenu ListarEspecialidadesMenus;
     private javax.swing.JComboBox<String> MedicoComboBox;
     private javax.swing.JMenu MedicosCadastrados;
@@ -395,8 +508,10 @@ public class AgendarCosulta extends javax.swing.JFrame {
     private javax.swing.JLabel PacienteLabel;
     private javax.swing.JMenu PacientesCadastradosMenu;
     private javax.swing.JMenu PacientesMenu;
+    private javax.swing.JCheckBox RetornoCheckBox;
     private javax.swing.JMenu SairMenu;
     private javax.swing.JTextField TextFieldData;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;

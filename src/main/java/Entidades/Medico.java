@@ -1,88 +1,103 @@
 package Entidades;
 
+
+import java.time.LocalDate;
+
+/**
+ * Classe que representa a entidade Médico.
+ */
 public class Medico {
-    private String Nome;
-    private String Cpf;
-    private String Endereco;
-    private String Telefone;
-    private String Crm;
-    private String EstadoCivil;
-    private String DataNascimento;
-    private Especialidade especialidade;
-    private String Observacoes ;
 
-    public String getNome() {
-        return Nome;
-    }
+    private String cpf;
+    private String nome;
+    private String telefone;
+    private String endereco;
+    private String sexo;
+    private String estadoCivil;
+    private boolean atendeConvenio;
+    private LocalDate dataNascimento;
+    private String especialidade;
+    private String observacoes;
 
-    public void setNome(String nome) {
-        Nome = nome;
-    }
-
+    // Getters e Setters para todos os atributos
+    
     public String getCpf() {
-        return Cpf;
+        return cpf;
     }
 
     public void setCpf(String cpf) {
-        Cpf = cpf;
+        this.cpf = cpf;
     }
 
-    public String getEndereco() {
-        return Endereco;
+    public String getNome() {
+        return nome;
     }
 
-    public void setEndereco(String endereco) {
-        Endereco = endereco;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getTelefone() {
-        return Telefone;
+        return telefone;
     }
 
     public void setTelefone(String telefone) {
-        Telefone = telefone;
+        this.telefone = telefone;
     }
 
-    public String getCrm() {
-        return Crm;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setCrm(String crm) {
-        Crm = crm;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getEstadoCivil() {
-        return EstadoCivil;
+        return estadoCivil;
     }
 
     public void setEstadoCivil(String estadoCivil) {
-        EstadoCivil = estadoCivil;
+        this.estadoCivil = estadoCivil;
     }
 
-    public String getDataNascimento() {
-        return DataNascimento;
+    public boolean isAtendeConvenio() {
+        return atendeConvenio;
     }
 
-    public void setDataNascimento(String dataNascimento) {
-        DataNascimento = dataNascimento;
+    public void setAtendeConvenio(boolean atendeConvenio) {
+        this.atendeConvenio = atendeConvenio;
     }
 
-    public Especialidade getEspecialidade() {
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getEspecialidade() {
         return especialidade;
     }
 
-    public void setEspecialidade(Especialidade especialidade) {
+    public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
     }
 
     public String getObservacoes() {
-        return Observacoes;
+        return observacoes;
     }
 
     public void setObservacoes(String observacoes) {
-        Observacoes = observacoes;
+        this.observacoes = observacoes;
     }
-
-    }
-
-
+}

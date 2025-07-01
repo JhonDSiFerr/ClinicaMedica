@@ -59,12 +59,13 @@ private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {
         jScrollPane2 = new javax.swing.JScrollPane();
         ConsultasTable = new javax.swing.JTable();
         EditarAgendaButton = new javax.swing.JButton();
+        ListarPorRetornoButton = new javax.swing.JButton();
+        ListarTodosButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         PacientesMenu = new javax.swing.JMenu();
         PacientesCadastradosMenu = new javax.swing.JMenu();
         CadastrarPacientesMenu = new javax.swing.JMenu();
         AgendarConsultasMenu = new javax.swing.JMenu();
-        AgendarRetornoMenu = new javax.swing.JMenu();
         MedicosMenu = new javax.swing.JMenu();
         CadastrarMedicoMenu = new javax.swing.JMenu();
         MedicosCadastradosMenu = new javax.swing.JMenu();
@@ -102,6 +103,10 @@ private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {
 
         EditarAgendaButton.setText("Editar agenda");
 
+        ListarPorRetornoButton.setText("Listar Por Retono");
+
+        ListarTodosButton.setText("Listar Todos");
+
         PacientesMenu.setText("Pacientes");
 
         PacientesCadastradosMenu.setText("Pacientes Cadastrados");
@@ -129,14 +134,6 @@ private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {
             }
         });
         jMenuBar1.add(AgendarConsultasMenu);
-
-        AgendarRetornoMenu.setText("Agendar retorno");
-        AgendarRetornoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AgendarRetornoMenuMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(AgendarRetornoMenu);
 
         MedicosMenu.setText("Médicos");
 
@@ -203,6 +200,10 @@ private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ListarTodosButton)
+                .addGap(18, 18, 18)
+                .addComponent(ListarPorRetornoButton)
+                .addGap(33, 33, 33)
                 .addComponent(EditarAgendaButton)
                 .addContainerGap())
         );
@@ -211,7 +212,10 @@ private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(EditarAgendaButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EditarAgendaButton)
+                    .addComponent(ListarTodosButton)
+                    .addComponent(ListarPorRetornoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 7, Short.MAX_VALUE))
         );
 
@@ -236,12 +240,6 @@ private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {
     AgendarCosulta.setVisible(true); // Torna a tela visível
     this.dispose();
     }//GEN-LAST:event_AgendarConsultasMenuMouseClicked
-
-    private void AgendarRetornoMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendarRetornoMenuMouseClicked
-     Agendarretorno Agendarretorno = new Agendarretorno();
-    Agendarretorno.setVisible(true); // Torna a tela visível
-    this.dispose();
-    }//GEN-LAST:event_AgendarRetornoMenuMouseClicked
 
     private void CadastrarMedicoMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadastrarMedicoMenuMouseClicked
        CadastrarMedico  CadastrarMedico = new  CadastrarMedico();
@@ -315,7 +313,6 @@ private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AgendaMenu;
     private javax.swing.JMenu AgendarConsultasMenu;
-    private javax.swing.JMenu AgendarRetornoMenu;
     private javax.swing.JMenu CadastrarEspecialidadesMenu;
     private javax.swing.JMenu CadastrarMedicoMenu;
     private javax.swing.JMenu CadastrarPacientesMenu;
@@ -323,6 +320,8 @@ private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {
     private javax.swing.JButton EditarAgendaButton;
     private javax.swing.JMenu EspecialidadesMenu;
     private javax.swing.JMenu ListarEspecialidadesMenu;
+    private javax.swing.JButton ListarPorRetornoButton;
+    private javax.swing.JButton ListarTodosButton;
     private javax.swing.JMenu MedicosCadastradosMenu;
     private javax.swing.JMenu MedicosMenu;
     private javax.swing.JMenu PacientesCadastradosMenu;

@@ -59,14 +59,6 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AgendarConsultasMenuMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="AgendarRetornoMenu">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Agendar retorno"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AgendarRetornoMenuMouseClicked"/>
-          </Events>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="MedicosMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="M&#xe9;dicos"/>
@@ -158,6 +150,10 @@
           <Component id="jScrollPane2" alignment="0" pref="592" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="ListarTodosButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="ListarPorRetornoButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="EditarAgendaButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -168,7 +164,11 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jScrollPane2" min="-2" pref="264" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="EditarAgendaButton" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="EditarAgendaButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ListarTodosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ListarPorRetornoButton" alignment="1" min="-2" pref="27" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -238,6 +238,16 @@
     <Component class="javax.swing.JButton" name="EditarAgendaButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Editar agenda"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="ListarPorRetornoButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Listar Por Retono"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="ListarTodosButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Listar Todos"/>
       </Properties>
     </Component>
   </SubComponents>

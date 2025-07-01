@@ -1,49 +1,40 @@
 package Entidades;
 
+
+import java.time.LocalDate;
+
+/**
+ * Classe que representa a entidade Especialidade.
+ */
 public class Especialidade {
-  private String Dataadd;
-  private String Nome;
-  private char covennio;
-  private Medico medico;
-  private String CBO;
 
-    public String getDataadd() {
-        return Dataadd;
-    }
+    private String nome;
+    private boolean atendeConvenio;
+    private LocalDate dataAdicao;
 
-    public void setDataadd(String dataadd) {
-        this.Dataadd = dataadd;
-    }
-
+    // Getters e Setters
+    
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String nome) {
-        this.Nome = nome;
+        this.nome = nome;
     }
 
-    public char getCovennio() {
-        return covennio;
+    public boolean isAtendeConvenio() {
+        return atendeConvenio;
     }
 
-    public void setCovennio(char covennio) {
-        this.covennio = covennio;
+    public void setAtendeConvenio(boolean atendeConvenio) {
+        this.atendeConvenio = atendeConvenio;
     }
 
-    public Medico getMedico() {
-        return medico;
+    public LocalDate getDataAdicao() {
+        return dataAdicao;
     }
 
-    public void setMedico(Medico medico) {
-        this.medico = medico;
-    }
-
-    public String getCBO() {
-        return CBO;
-    }
-
-    public void setCBO(String CBO) {
-        this.CBO = CBO;
+    public void setDataAdicao(LocalDate dataAdicao) {
+        this.dataAdicao = dataAdicao;
     }
 }

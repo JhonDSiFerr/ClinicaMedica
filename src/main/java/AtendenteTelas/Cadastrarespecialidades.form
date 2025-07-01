@@ -50,11 +50,6 @@
             <Property name="text" type="java.lang.String" value="Agendar Consultas"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="AgendarRetornoMenu">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Agendar retorno"/>
-          </Properties>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="MedicosMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="M&#xe9;dicos"/>
@@ -131,19 +126,14 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="AtendeconveniolabelMenu" min="-2" pref="129" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="AtendeConvenioCheckbox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="AtendeconveniolabelMenu" min="-2" pref="129" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="DataAddLabel" min="-2" pref="90" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="DataAddMenu" min="-2" pref="218" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="MedicoDisponivelLabel" min="-2" pref="112" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="MedicoDisponivelCombobox" min="-2" pref="173" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -191,17 +181,12 @@
                   <Component id="AtendeconveniolabelMenu" min="-2" max="-2" attributes="0"/>
                   <Component id="AtendeConvenioCheckbox" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="MedicoDisponivelLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="MedicoDisponivelCombobox" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CancelarButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="AdicionarButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace pref="22" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -217,35 +202,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DataAddMenuActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="MedicoDisponivelLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="M&#xe9;dico disponivel :"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="EspecialidadeLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Especialidade:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="MedicoDisponivelCombobox">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JLabel" name="AtendeconveniolabelMenu">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Atende por conv&#xea;nio ?"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="CBOlabel">
       <Properties>
@@ -263,6 +225,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="AtendeConvenioCheckbox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Atende por conv&#xea;nio ?"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AtendeConvenioCheckboxActionPerformed"/>
       </Events>
@@ -276,6 +241,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Adicionar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AdicionarButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

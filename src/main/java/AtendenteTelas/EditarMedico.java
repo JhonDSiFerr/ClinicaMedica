@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package AtendenteTelas;
-
+import Utils.ComboBoxManager;
 import Login.LoginTela;
 
 /**
@@ -19,6 +19,14 @@ public class EditarMedico extends javax.swing.JFrame {
      */
     public EditarMedico() {
         initComponents();
+        
+        
+         ComboBoxManager.preencherComboBoxSexo(SexoComboBox); // Supondo que seu JComboBox se chame 'SexoComboBox'
+        ComboBoxManager.preencherComboBoxEstadoCivil(EstadoCivilComboBox); // Supondo que seu JComboBox se chame 'EstadoCivilComboBox'
+    
+        
+        
+        
         PacientesCadastrados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PacientesCadastradosMenuMouseClicked(evt);
@@ -34,11 +42,7 @@ public class EditarMedico extends javax.swing.JFrame {
                 AgendarConsultasMenuMouseClicked(evt);
             }
         });
-        AgendarRetornoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AgendarRetornoMenuMouseClicked(evt);
-            }
-        });
+        
         CadastarMedicoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CadastrarMedicoMenuMouseClicked(evt);
@@ -100,7 +104,6 @@ public class EditarMedico extends javax.swing.JFrame {
         NomeTextField = new javax.swing.JTextField();
         CpfTextField = new javax.swing.JTextField();
         EnderecoTextField = new javax.swing.JTextField();
-        SexoTextField = new javax.swing.JTextField();
         CRMTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         EspecialidadeLabel = new javax.swing.JLabel();
@@ -117,6 +120,7 @@ public class EditarMedico extends javax.swing.JFrame {
         CancelarButton = new javax.swing.JButton();
         SalvarButton = new javax.swing.JButton();
         ApagarButton = new javax.swing.JButton();
+        SexoComboBox = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         PacientesCadastradoMenu = new javax.swing.JMenu();
         PacientesCadastrados = new javax.swing.JMenu();
@@ -185,6 +189,8 @@ public class EditarMedico extends javax.swing.JFrame {
                 ApagarButtonActionPerformed(evt);
             }
         });
+
+        SexoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         PacientesCadastradoMenu.setText("Pacientes");
 
@@ -268,8 +274,9 @@ public class EditarMedico extends javax.swing.JFrame {
                                             .addGap(18, 18, 18)))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(CRMTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(SexoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(EstadoCivilComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(EstadoCivilComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(SexoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(83, 83, 83))))
                         .addGap(99, 99, 99)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
@@ -320,7 +327,7 @@ public class EditarMedico extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(SexoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(SexoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -369,11 +376,7 @@ public class EditarMedico extends javax.swing.JFrame {
     this.dispose();
     }                                                 
 
-    private void AgendarRetornoMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                
-     Agendarretorno Agendarretorno = new Agendarretorno();
-    Agendarretorno.setVisible(true); // Torna a tela visível
-    this.dispose();
-    }                                               
+                                               
 
     private void CadastrarMedicoMenuMouseClicked(java.awt.event.MouseEvent evt) {                                                 
        CadastrarMedico  CadastrarMedico = new  CadastrarMedico();
@@ -479,7 +482,7 @@ public class EditarMedico extends javax.swing.JFrame {
     private javax.swing.JMenu PacientesCadastrados;
     private javax.swing.JMenu SairMenu;
     private javax.swing.JButton SalvarButton;
-    private javax.swing.JTextField SexoTextField;
+    private javax.swing.JComboBox<String> SexoComboBox;
     private javax.swing.JTextField TelefoneTextfield;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
