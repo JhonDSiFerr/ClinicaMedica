@@ -3,8 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package AtendenteTelas;
+import Daos.PacienteDAO;
+import Entidades.Paciente;
 import Utils.ComboBoxManager;
 import Login.LoginTela;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,16 +17,36 @@ import Login.LoginTela;
 public class EditarPaciente extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditarPaciente.class.getName());
-
+    private PacienteDAO dao = new PacienteDAO();
+    private Paciente paciente;
+    
+      public EditarPaciente(String cpf) {
+        initComponents(); // Inicializa os componentes visuais da tela
+        
+        // Busca os dados completos do paciente no banco de dados
+        this.paciente = dao.findByCpf(cpf);
+        
+        if (this.paciente != null) {
+            // Se encontrou o paciente, preenche os campos da tela
+            preencherCampos();
+        } else {
+            // Se, por algum motivo, não encontrou, mostra um erro e fecha a tela
+            JOptionPane.showMessageDialog(this, "Paciente com CPF " + cpf + " não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
+            dispose(); 
+        }
+    }
+    
+    
     /**
      * Creates new form Menumain
      */
     public EditarPaciente() {
         initComponents();
         
+        
          ComboBoxManager.preencherComboBoxSexo(SexoComboBox); // Supondo que seu JComboBox se chame 'SexoComboBox'
         ComboBoxManager.preencherComboBoxEstadoCivil(EstadoCivilComboBox); // Supondo que seu JComboBox se chame 'EstadoCivilComboBox'
-    
+        ComboBoxManager.preencherComboBoxConvenio(ConvenioComboBox);
         
         
         PacientesCadastradosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -176,10 +200,20 @@ public class EditarPaciente extends javax.swing.JFrame {
 
         ApagarButton.setBackground(new java.awt.Color(255, 0, 0));
         ApagarButton.setText("Apagar");
+        ApagarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ApagarButtonActionPerformed(evt);
+            }
+        });
 
         SexoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         ConvenioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ConvenioComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConvenioComboBoxActionPerformed(evt);
+            }
+        });
 
         PacientesMenu.setText("Pacientes");
 
@@ -395,13 +429,65 @@ public class EditarPaciente extends javax.swing.JFrame {
     }   
     
     private void SalvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarButtonActionPerformed
-        // TODO add your handling code here:
+        // Atualiza o objeto 'paciente' com os novos dados dos campos
+        paciente.setNome(NomeTextfield.getText());
+        paciente.setTelefone(TelefoneTextField.getText());
+        
+        // Pegue os outros dados e atualize o objeto...
+        
+        // Chama o método UPDATE do DAO
+        dao.update(paciente);
+        
+        // Fecha a tela de edição
+        dispose();
+    
+     // TODO add your handling code here:
     }//GEN-LAST:event_SalvarButtonActionPerformed
 
     private void CancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CancelarButtonActionPerformed
 
+    private void ApagarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApagarButtonActionPerformed
+ // Pede confirmação para evitar acidentes
+        int resposta = JOptionPane.showConfirmDialog(
+            this, 
+            "Tem a certeza de que deseja excluir permanentemente o paciente " + paciente.getNome() + "?", 
+            "Confirmar Exclusão", 
+            JOptionPane.YES_NO_OPTION, 
+            JOptionPane.WARNING_MESSAGE
+        );
+        
+        if (resposta == JOptionPane.YES_OPTION) {
+            // Se o usuário confirmar, chama o método DELETE do DAO
+            dao.delete(paciente.getCpf());
+            dispose(); // Fecha a tela
+        }
+            // TODO add your handling code here:
+    }//GEN-LAST:event_ApagarButtonActionPerformed
+
+    private void ConvenioComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConvenioComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConvenioComboBoxActionPerformed
+private void preencherCampos() {
+        setTitle("Editar Paciente: " + paciente.getNome());
+
+        // Preenche os campos de texto
+        CpfTextField.setText(paciente.getCpf());
+        CpfTextField.setEditable(false); // IMPORTANTE: O CPF é a chave, não deve ser alterado!
+        
+        NomeTextfield.setText(paciente.getNome());
+        TelefoneTextField.setText(paciente.getTelefone());
+        
+        // Formata a data para exibir no campo
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DatadenascimentoTextField.setText(paciente.getDataNascimento().format(formato));
+        
+        // Preencha outros campos como JComboBox de sexo, etc., se houver
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */

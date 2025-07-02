@@ -1,52 +1,45 @@
 package Entidades;
 
-
 import java.time.LocalDate;
 
-/**
- * Classe de Modelo (Model) que representa a entidade Paciente.
- * Ela serve como um "molde" para armazenar os dados de cada paciente.
- */
 public class Paciente {
-    
-    // Atributos que correspondem às colunas da sua tabela no banco de dados
-    private String cpf;
+
     private String nome;
+    private String cpf;
     private String telefone;
+    private String endereco;
+    private String sexo;
     private LocalDate dataNascimento;
-    // Se tiver mais colunas (ex: sexo, endereco), adicione os atributos aqui
+    private String estadoCivil;
+    private String convenio;
+    private String informacoes;
 
-    // Métodos Getters e Setters para aceder e modificar os atributos de forma segura
+    // Getters e Setters para todos os atributos
     
-    public String getCpf() {
-        return cpf;
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
 
-    public String getNome() {
-        return nome;
-    }
+    public String getTelefone() { return telefone; }
+    public void setTelefone(String telefone) { this.telefone = telefone; }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public String getEndereco() { return endereco; }
+    public void setEndereco(String endereco) { this.endereco = endereco; }
 
-    public String getTelefone() {
-        return telefone;
-    }
+    public String getSexo() { return sexo; }
+    public void setSexo(String sexo) { this.sexo = sexo; }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+    public LocalDate getDataNascimento() { return dataNascimento; }
+    public void setDataNascimento(LocalDate dataNascimento) { this.dataNascimento = dataNascimento; }
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
+    public String getEstadoCivil() { return estadoCivil; }
+    public void setEstadoCivil(String estadoCivil) { this.estadoCivil = estadoCivil; }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
+    public String getConvenio() { return convenio; }
+    public void setConvenio(String convenio) { this.convenio = convenio; }
+
+    public String getInformacoes() { return informacoes; }
+    public void setInformacoes(String informacoes) { this.informacoes = informacoes; }
 }

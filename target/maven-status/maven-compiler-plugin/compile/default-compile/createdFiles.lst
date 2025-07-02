@@ -20,11 +20,13 @@ MedicoTelas\Prontuario$3.class
 AtendenteTelas\PacientesCadastradosAtendente$3.class
 AtendenteTelas\Cadastrarespecialidades$9.class
 AtendenteTelas\AgendarCosulta$2.class
+AtendenteTelas\EditarPaciente$13.class
 AtendenteTelas\EditarMedico$9.class
 AtendenteTelas\EspecialidadeCadastradas$2.class
 AtendenteTelas\AgendarCosulta$10.class
 AtendenteTelas\EditarCosulta$11.class
 AtendenteTelas\EditarPaciente$5.class
+AtendenteTelas\PacientesCadastradosAtendente$12.class
 AtendenteTelas\Cadastrarespecialidades$11.class
 Entidades\Medico.class
 Login\LoginTela$4.class
@@ -95,6 +97,7 @@ AtendenteTelas\EditarPaciente$6.class
 MedicoTelas\BuscarPaciente$3.class
 AtendenteTelas\MedicosCadastradosAtendente$8.class
 AtendenteTelas\PacientesCadastradosAtendente$7.class
+AtendenteTelas\PacientesCadastradosAtendente$13.class
 AtendenteTelas\EditarPaciente.class
 AtendenteTelas\Editarespecialidades$14.class
 AtendenteTelas\EditarPaciente$4.class
@@ -127,6 +130,7 @@ AtendenteTelas\Cadastrarespecialidades$7.class
 AtendenteTelas\PacientesCadastradosAtendente$5.class
 AtendenteTelas\EditarMedico$2.class
 AtendenteTelas\MedicosCadastradosAtendente$11.class
+AtendenteTelas\EditarPaciente$12.class
 Daos\ConnectDatabase.class
 AtendenteTelas\EditarPaciente$1.class
 AtendenteTelas\EditarMedico$8.class

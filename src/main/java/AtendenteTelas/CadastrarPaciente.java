@@ -3,8 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package AtendenteTelas;
+import Daos.PacienteDAO;
+import Entidades.Paciente;
 import Utils.ComboBoxManager;
 import Login.LoginTela;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -389,6 +395,57 @@ public class CadastrarPaciente extends javax.swing.JFrame {
             this.dispose();
         }
     }   
+    
+    
+     private void salvarPaciente() {
+        // Validação básica
+        if(NomeTextField.getText().trim().isEmpty() || CpfTextField.getText().contains("_")) {
+            JOptionPane.showMessageDialog(this, "Nome e CPF são obrigatórios.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Paciente paciente = new Paciente();
+        paciente.setNome(NomeTextField.getText());
+        paciente.setCpf(CpfTextField.getText());
+        paciente.setTelefone(TelefoneTextField.getText());
+        paciente.setEndereco(EnderecoTextField.getText());
+        paciente.setSexo(SexoComboBox.getSelectedItem().toString());
+        paciente.setEstadoCivil(EstadoCivilComboBox.getSelectedItem().toString());
+        paciente.setConvenio(ConveniosComboBox.getSelectedItem().toString());
+        paciente.setInformacoes(InformacoesTextArea.getText());
+
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            paciente.setDataNascimento(LocalDate.parse(DatadeNascimentoTextField.getText(), formatter));
+
+            // Salva no banco
+            PacienteDAO dao = new PacienteDAO();
+            dao.save(paciente);
+            
+            limparCampos();
+
+        } catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(this, "Data de Nascimento inválida.", "Erro de Formato", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+     
+     
+      private void limparCampos() {
+        NomeTextField.setText("");
+        CpfTextField.setText("");
+        TelefoneTextField.setText("");
+        EnderecoTextField.setText("");
+        DatadeNascimentoTextField.setText("");
+        SexoComboBox.setSelectedIndex(0);
+        EstadoCivilComboBox.setSelectedIndex(0);
+        ConveniosComboBox.setSelectedIndex(0);
+        InformacoesTextArea.setText("");
+        NomeTextField.requestFocus();
+    }
+     
+    
+    
+    
     
     private void SalvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarButtonActionPerformed
         // TODO add your handling code here:

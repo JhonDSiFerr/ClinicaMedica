@@ -7,8 +7,11 @@ package AtendenteTelas;
 import Daos.PacienteDAO;
 import Entidades.Paciente;
 import Login.LoginTela;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,6 +20,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PacientesCadastradosAtendente extends javax.swing.JFrame {
     
+    
+    
+    private String cpfSelecionado = null;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PacientesCadastradosAtendente.class.getName());
 
     /**
@@ -28,7 +34,19 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
         
          preencherTabela();
          
-         
+         PacientesTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Pega a linha que foi clicada
+                int linhaSelecionada = PacientesTable.getSelectedRow();
+                
+                if (linhaSelecionada != -1) { // Garante que uma linha foi realmente selecionada
+                    // Pega o valor da coluna do CPF (assumindo que é a coluna 1, a segunda coluna)
+                    // Lembre-se que a contagem começa em 0. Se CPF for a primeira coluna, use 0.
+                    cpfSelecionado = PacientesTable.getValueAt(linhaSelecionada, 1).toString();
+                }
+            }
+        });
          
          
             PacientesCadastradosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,6 +114,7 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         PacientesTable = new javax.swing.JTable();
         EditarPacientesCadastradosButton = new javax.swing.JButton();
+        AtualizarButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         PacientesMenu = new javax.swing.JMenu();
         PacientesCadastradosMenu = new javax.swing.JMenu();
@@ -137,6 +156,13 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
         EditarPacientesCadastradosButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditarPacientesCadastradosButtonActionPerformed(evt);
+            }
+        });
+
+        AtualizarButton.setText("Atualizar");
+        AtualizarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtualizarButtonActionPerformed(evt);
             }
         });
 
@@ -188,6 +214,8 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AtualizarButton)
+                .addGap(18, 18, 18)
                 .addComponent(EditarPacientesCadastradosButton)
                 .addContainerGap())
         );
@@ -196,7 +224,9 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(EditarPacientesCadastradosButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EditarPacientesCadastradosButton)
+                    .addComponent(AtualizarButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -268,9 +298,37 @@ public class PacientesCadastradosAtendente extends javax.swing.JFrame {
     }   
     
     private void EditarPacientesCadastradosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarPacientesCadastradosButtonActionPerformed
+ if (cpfSelecionado != null) {
+            // Abre a tela de cadastro, mas passando o CPF para o construtor
+            // Isto colocará a tela em "modo de edição"
+             EditarPaciente telaEdicao = new EditarPaciente(cpfSelecionado);
+        telaEdicao.setVisible(true);
+
+            // O ideal é recarregar a tabela depois que a tela de edição for fechada
+            // Uma forma simples é adicionar um botão "Atualizar" que chama preencherTabela()
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, selecione um paciente na tabela para editar.", "Nenhum paciente selecionado", JOptionPane.WARNING_MESSAGE);
+        }
+
+
+
+
+
+
+
         // TODO add your handling code here:
     }//GEN-LAST:event_EditarPacientesCadastradosButtonActionPerformed
-private void preencherTabela() {
+
+    private void AtualizarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarButtonActionPerformed
+ 
+        preencherTabela();    
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_AtualizarButtonActionPerformed
+
+    
+    private void preencherTabela() {
         DefaultTableModel modelo = (DefaultTableModel) PacientesTable.getModel();
         modelo.setRowCount(0); // Limpa a tabela
 
@@ -317,6 +375,7 @@ private void preencherTabela() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AgendaMenu;
     private javax.swing.JMenu AgendarConsultasMenu;
+    private javax.swing.JButton AtualizarButton;
     private javax.swing.JMenu CadastrarEspecialidadesMenu;
     private javax.swing.JMenu CadastrarMedicoMenu;
     private javax.swing.JMenu CadastrarPacientesMenu;
